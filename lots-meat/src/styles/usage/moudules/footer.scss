@@ -1,0 +1,17 @@
+.index-footer{
+    width: 100%;
+    height: .49rem;
+    background: #fff;
+    ul{
+        @include flexbox();
+        @include justify-content(space-between); 
+        padding: .08rem .4rem;
+        li{
+            height: .33rem;
+            width: .51rem;
+            line-height: .33rem;
+            text-align: center;
+            @include border(1px, #666);
+        }
+    }
+}

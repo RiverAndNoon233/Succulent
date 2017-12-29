@@ -1,0 +1,50 @@
+
+.lot-two{
+    width: 100%;
+    height: 100%;
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(space-between);
+    .lot-head{
+        .lot-header{
+            height: 0.44rem;
+            background: greenyellow;
+            text-align: center;
+            line-height: .44rem;
+            color: white;
+            position: relative;
+            div{
+                position: absolute;
+                right: 0;
+                top:0;
+            }
+        }
+        .lot-nav{
+            ul{
+                @include flexbox();
+                @include justify-content(space-between);
+                height: .44rem;
+                padding: 0 .06rem;
+                li{
+                    @include flex();
+                    text-align: center;
+                    line-height: .44rem;
+                }
+                .router-link-active{
+                    color: greenyellow;
+                    border-bottom: .02rem solid greenyellow;
+                }
+            }
+        }
+    }
+    .router-items{
+        background: red;
+        @include flex();
+        width: 100%;
+    }
+}
+
+
+
+
+
