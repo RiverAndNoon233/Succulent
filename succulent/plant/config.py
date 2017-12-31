@@ -23,13 +23,13 @@ class Config:
 
 #开发环境
 class DevelopmentConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir,'blog_dev.sqlite')
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir,'succulent_dev.sqlite')
 #测试环境
 class TestingConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir,'blog_test.sqlite')
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir,'succulent_test.sqlite')
 #生成环境
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir,'blog.sqlite')
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir,'succulent.sqlite')
 
 #配置字典
 config = {
