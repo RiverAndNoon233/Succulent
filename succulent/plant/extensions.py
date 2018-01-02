@@ -6,6 +6,8 @@ from flask_mail import Mail
 from flask_moment import Moment
 from flask_login import LoginManager
 from flask_uploads import UploadSet,IMAGES,configure_uploads,patch_request_class
+# 接口
+from flask_restful import Api,Resource
 
 #创建对象
 bootstrap = Bootstrap()
@@ -15,6 +17,10 @@ moment = Moment()
 migrate = Migrate(db=db)
 login_manager = LoginManager()
 photos = UploadSet('photos',IMAGES)
+# 创建接口对象
+api = Api()
+# 资源对象
+# resource = Resource()
 
 #初始化
 def config_extensions(app):
@@ -23,6 +29,9 @@ def config_extensions(app):
     mail.init_app(app)
     moment.init_app(app)
     migrate.init_app(app)
+    # 初始化接口
+    api.init_app(app)
+
     #登录认证
     login_manager.init_app(app)
     #指定登录的端点

@@ -1,9 +1,11 @@
 from plant.views.duoduo.main import main
+from plant.views.mine.login import login
 
 
 #蓝本配置
 DEFAULT_BLUEPRINT = (
     (main,''),
+    (login,'/login'),
 
 )
 
