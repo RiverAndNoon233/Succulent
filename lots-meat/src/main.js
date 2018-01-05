@@ -12,9 +12,12 @@ import 'mint-ui/lib/style.css'
 Vue.use(MintUI)
 
 /* eslint-disable no-new */
+//vuex
+import store from './vuex/store.js'
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

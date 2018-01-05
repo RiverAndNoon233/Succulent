@@ -1,15 +1,13 @@
 <template>
-    <div class="mine">
-    11111231
+    <div class="my-collect">
+    <h1>123</h1>
     </div>
 </template>
-
 <script>
     export default {
-        name:"mine"
-    }        
+        name:"my-collect"
+    }
 </script>
-
 <style>
-    
+
 </style>
