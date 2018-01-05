@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 //一下四个是二级路由组件
-import news from "@/components/lots/modules/news"
 import lots from "@/components/lots/modules/lots"
 import article from "@/components/lots/modules/article"
+import news from "@/components/lots/modules/news"
 import picture from "@/components/lots/modules/picture"
 
 //以下四个分别是 多多 商城 我的 。。
@@ -12,6 +12,9 @@ import lotTwo from '@/components/lots/lotTwo'
 import Find from "@/components/lots/find"
 import Shop from "@/components/lots/shop"
 import Mine from "@/components/lots/mine"
+
+//一下四个是二级路由组件
+import newPerson from "@/components/lots/modules/lots-vue/nav-vue/nav-newPerson"
 
 Vue.use(Router)
 
@@ -24,7 +27,9 @@ const routes = [
     //二级路由
     {path: '/lotindex',component:lotTwo,children:[
       {path: '',redirect:'lots',component:lots},
-      {path: 'lots',name: 'lots',component:lots},
+      {path: 'lots',name: 'lots',component:lots,children:[
+         {path:"/newPerson",name:'newPerson',component:newPerson},
+      ]},
       {path: 'article',name: 'article',component:article},
       {path: 'picture',name: 'picture',component:picture},
       {path: 'news',name: 'news',component:news},    
@@ -37,5 +42,6 @@ const router = new Router({
   routes,
   mode:'history'
 })
+
 //暴露路由模块
 export default router

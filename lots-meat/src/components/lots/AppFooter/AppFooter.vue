@@ -3,7 +3,22 @@
     <div class="AppFooter">
        <div class="index-footer">
             <ul>
-                <router-link v-for="foo in foos" :key="foo.id" :to="foo.name" tag="li" replace>{{foo.content}}</router-link>
+                <router-link :to="'/lotindex'" tag="li" replace>
+                    <span class="yo-ico">&#xe658;</span>
+                    <i>多多</i>
+                </router-link>
+                <router-link :to="'/find-fo'" tag="li" replace>
+                    <span class="yo-ico">&#xe607;</span>
+                    <i>发现</i>
+                </router-link>
+                <router-link :to="'/shop-fo'" tag="li" replace>
+                    <span class="yo-ico">&#xe600;</span>
+                    <i>商城</i>
+                </router-link>
+                <router-link :to="'/mine-fo'" tag="li" replace>
+                    <span class="yo-ico">&#xe6e6;</span>
+                    <i>我的</i>
+                </router-link>
             </ul>
        </div>
     </div>
@@ -15,12 +30,7 @@
         //底部循环 路由
         data:function(){
             return {
-                foos:[
-                    {id:1,content:"多多",name:"/lotindex"},
-                    {id:2,content:"发现",name:"/find-fo"},
-                    {id:3,content:"商城",name:"/shop-fo"},
-                    {id:4,content:"我的",name:"/mine-fo"},                
-                ]
+               
             }
         }
     }        

@@ -6,40 +6,34 @@
     @include flex-direction(column);
     @include justify-content(space-between);
     .lot-head{
-        .lot-header{
-            height: 0.44rem;
-            background: greenyellow;
-            text-align: center;
-            line-height: .44rem;
-            color: white;
-            position: relative;
-            div{
-                position: absolute;
-                right: 0;
-                top:0;
-            }
-        }
         .lot-nav{
+            height:50px;
+            background:#fff;
             ul{
                 @include flexbox();
                 @include justify-content(space-between);
-                height: .44rem;
+                background: #fff;
+                height: 44px;
                 padding: 0 .06rem;
                 li{
                     @include flex();
                     text-align: center;
                     line-height: .44rem;
+                    color:#333;
+                    font-size:0.14rem;
+                    font-weight: 900;
                 }
                 .router-link-active{
-                    color: greenyellow;
-                    border-bottom: .02rem solid greenyellow;
+                    color: #03aa1a;
+                    border-bottom: .02rem solid #03aa1a;
                 }
             }
         }
     }
     .router-items{
-        background: red;
+        background: #fff;
         @include flex();
+        overflow-y: scroll;
         width: 100%;
     }
 }
