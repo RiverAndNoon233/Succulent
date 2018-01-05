@@ -9,10 +9,6 @@
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/plant/shop/templates" />
-        <option value="$MODULE_DIR$/plant/mine/templates" />
-        <option value="$MODULE_DIR$/plant/found/templates" />
-        <option value="$MODULE_DIR$/plant/duoduo/templates" />
         <option value="$MODULE_DIR$/plant/templates" />
       </list>
     </option>
