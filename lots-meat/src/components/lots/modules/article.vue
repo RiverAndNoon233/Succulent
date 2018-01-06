@@ -1,12 +1,16 @@
 <template>
     <div class="router-items">
-    123
+       <artical-box></artical-box>
     </div>
 </template>
 
 <script>
+import ArticalBox from "./artical-vue/artical-box"
     export default {
-        name:"router-items"
+        name:"router-items",
+        components:{
+           ArticalBox
+        }
     }        
 </script>
 

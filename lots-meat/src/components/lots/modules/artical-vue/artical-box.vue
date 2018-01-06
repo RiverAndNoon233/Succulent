@@ -1,21 +1,17 @@
 <template>
-    <div class="lots-box">
-       <p class="kong"></p>
-       <h3>
-           <span></span>
-           最新热帖
-        </h3>
-        <lots-box-item :hotartical = "hotartical" v-for="hotartical in hotarticals" :key="hotartical.id"></lots-box-item>
+    <div class="artical-box">
+        
+        <artical-box-item :hotartical = "hotartical" v-for="hotartical in hotarticals" :key="hotartical.id"></artical-box-item>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-import LotsBoxItem from "./lots-boxItem"
+import ArticalBoxItem from "./artical-boxItem"
 export default {
-    name:"lots-box",
+    name:"artical-box",
     components:{
-        LotsBoxItem
+        ArticalBoxItem
     },
     data(){
       return {

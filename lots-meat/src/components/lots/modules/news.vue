@@ -1,12 +1,16 @@
 <template>
     <div class="router-items">
-    11111111
+        <new-articals></new-articals>
     </div>
 </template>
 
 <script>
+import NewArticals from "./news-vue/news-box";
     export default {
-        name:"router-items"
+        name:"router-items",
+         components:{
+           NewArticals
+        }
     }        
 </script>
 

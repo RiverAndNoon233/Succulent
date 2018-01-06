@@ -5,6 +5,9 @@ const mutations = {
     },
     initLogin(state,data){
         state.LoginOnData=data
-    }
+    },
+    changeTitle_know(state,title){
+    	state.title_know = title
+    },
 }
 export default mutations

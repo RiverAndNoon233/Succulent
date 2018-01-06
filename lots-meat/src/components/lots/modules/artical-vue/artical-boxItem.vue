@@ -12,7 +12,7 @@
 
 <script>
 export default {
-    name:"lots-boxItem",
+    name:"artical-boxItem",
     props:['hotartical']
 }        
 </script>

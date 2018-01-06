@@ -1,14 +1,27 @@
 <template>
     <div class="lots-nav">
        <ul>
-           <router-link :to="'/newPerson'" tag="li" replace>
+           <router-link :to="'/lotindex/newPersonKnow'" tag="li" replace>
                 <p><img src="/static/images/5.png"></p>
                 <i>新人须知</i>
            </router-link>
+            <router-link :to="'/lotindex/newShopKnow'" tag="li" replace>
+                <p><img src="/static/images/6.png"></p>
+                <i>交易须知</i>
+           </router-link>
+            <router-link :to="'/lotindex/newPlantKnow'" tag="li" replace>
+                <p><img src="/static/images/7.png"></p>
+                <i>种植知识</i>
+           </router-link>
+            <router-link :to="'/lotindex/newDayKnow'" tag="li" replace>
+                <p><img src="/static/images/8.png"></p>
+                <i>每日签到</i>
+           </router-link>
+
            <!-- <li>
                <p><img src="/static/images/5.png"></p>
                <i>新人须知</i>
-           </li> -->
+           </li>
            <li>
                <p><img src="/static/images/6.png"></p>
                <i>交易须知</i>
@@ -20,7 +33,7 @@
            <li>
                <p><img src="/static/images/8.png"></p>
                <i>每日签到</i>
-           </li>
+           </li> -->
        </ul>
     </div>
 </template>

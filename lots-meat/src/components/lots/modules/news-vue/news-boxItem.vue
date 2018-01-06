@@ -1,19 +1,19 @@
 <template>
     <div class="lots-boxItem">
       <div class="lots-boxItemLeft">
-          <img :src="hotartical.urlimage">
+          <img :src="newartical.urlimage">
       </div>
       <div class="lots-boxItemRight">
-          <h4>{{hotartical.title}}</h4>
-          <p><i>{{hotartical.timestamp}}分钟前</i><b>{{hotartical.count}}</b></p>
+          <h4>{{newartical.title}}</h4>
+          <p><i></i><b>{{newartical.count}}评</b></p>
       </div>
     </div>
 </template>
 
 <script>
 export default {
-    name:"lots-boxItem",
-    props:['hotartical']
+    name:"news-boxItem",
+    props:['newartical']
 }        
 </script>
 

@@ -1,15 +1,16 @@
 <template>
-    <div class="find-to">
-    1111166666666
+    <div class="find-nav">
+    find-nav
     </div>
 </template>
 
 <script>
     export default {
-        name:"find-fo"
+        name:"find-nav"
     }        
 </script>
 
-<style>
+<style lang="scss" scoped>
+
     
 </style>
