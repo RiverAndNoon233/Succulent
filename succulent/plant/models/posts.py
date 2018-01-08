@@ -16,3 +16,6 @@ class Posts(db.Model):
     #添加关联外键，‘表名.字段’
     uid = db.Column(db.Integer,db.ForeignKey('users.id'))
 
+    #关联图片一对多关系
+    image = db.relationship('Image', backref='posts', lazy='dynamic')
+

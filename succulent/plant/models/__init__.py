@@ -1,8 +1,10 @@
 from plant.extensions import db
+from plant.models.images import Image
 from .users import User
 from .posts import Posts
 from .news import News
 from .goods import Goods
+
 
 # 创建多对多的中间关联表,ORM自动维护
 collections = db.Table('collections',
