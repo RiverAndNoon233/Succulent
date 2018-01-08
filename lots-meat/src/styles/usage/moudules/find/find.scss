@@ -1,3 +1,5 @@
+
+@import "./find-detail/find-boxdetail.scss";
 .find-to{
     @include flexbox();
     @include flex-direction(column);
@@ -22,7 +24,34 @@
     .find-box{
        
         .find-nav{
-           
+           width:100%;
+           height:1.48rem;
+           background:#cdcdcd;
+           @include flexbox();
+           @include align-items(center);
+           @include justify-content(center);    
+           ul{
+               width:3.56rem;
+               height:1.29rem;
+               @include flexbox();
+               @include flex-wrap(wrap);
+               @include align-content(space-between);
+               @include justify-content(space-between);    
+               li{
+                   width:1.75rem;
+                   height:0.6rem;
+                   background:#fff;
+                   border-radius: 0.05rem;
+                   padding:0.1rem;
+                   img{
+                       width:0.5rem;
+                       height:0.4rem;
+                   }
+                    b{
+                        padding-left:0.1rem;
+                    }
+               }
+           }
         }
         .find-newbox{
 

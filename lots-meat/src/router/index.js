@@ -28,6 +28,9 @@ import MyPublish from "@/components/lots/mine/minetop/MyPublish"
 import MyCollect from "@/components/lots/mine/minetop/MyCollect"
 import MyFriends from "@/components/lots/mine/minetop/MyFriends"
 
+//发现里面的二级路由
+import FindBoxDetail from "@/components/lots/find/Find-boxdetail"
+
 Vue.use(Router)
 
 import store from '../vuex/store'
@@ -35,7 +38,9 @@ import store from '../vuex/store'
 const routes = [
     {path:'/',redirect:'/lotindex'},
     
-    {path:"/find-fo",name:'find-fo',component:Find},
+    {path:"/find-fo",name:'find-fo',component:Find,children:[
+      {path:"FindBoxDetail",name:"FindBoxDetail",component:FindBoxDetail}
+    ]},
     {path:"/shop-fo",name:'shop-fo',component:Shop},
     {path:"/mine-fo",name:'',component:Mine,children:[
       {path:'',redirect:to=>{ 			
@@ -80,18 +85,27 @@ const router = new Router({
 
 //change title_know
 router.beforeEach(function(to,from,next){
-	
+  let num = to.query.num;
 	let {name} = to
 	let title = ''
-	
+  let type=""
+  
 	switch(name){
 		case 'newPersonKnow':title='新人须知';break;
 		case 'newShopKnow':title='交易须知';break;
     case 'newPlantKnow':title='种植知识';break;
     case 'newDayKnow':title='每日签到';break;
-		default :title = '卖座电影';break;
-	}
-	store.commit('changeTitle_know',title)
+		default :title = '多多';break;
+  }
+  switch(num){
+    case 1:type='景天科';break;
+    case 2:type='仙人掌科';break;
+    case 3:type='番杏科';break;
+    case 4:type='百合科';break;
+    default :type = '多多';break;
+  }
+  store.commit('changeTitle_know',title)
+  store.commit('changeType',type)
 	next()
 })
 //暴露路由模块

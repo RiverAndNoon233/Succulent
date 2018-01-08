@@ -2,6 +2,7 @@
     <div class="find-to">
         <find-head></find-head>
         <find-box></find-box>
+        <router-view></router-view>
     </div>
 </template>
 

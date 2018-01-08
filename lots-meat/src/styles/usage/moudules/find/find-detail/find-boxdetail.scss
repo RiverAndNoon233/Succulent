@@ -1,0 +1,11 @@
+.find-boxdetail{
+    .find-detailhead{
+        width:100%;
+        height:44px;
+        background:#04b10a;
+        color:#fff;
+        @include flexbox();
+        @include justify-content(center); 
+        @include align-items(center);
+    }
+}

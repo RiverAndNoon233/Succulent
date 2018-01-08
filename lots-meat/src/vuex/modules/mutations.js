@@ -9,5 +9,11 @@ const mutations = {
     changeTitle_know(state,title){
     	state.title_know = title
     },
+    changeFind_type(state,type){
+        state.find_type = type;
+    },
+    changeType(state,type){
+        state.detail_type = type;
+    }
 }
 export default mutations
