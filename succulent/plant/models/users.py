@@ -10,11 +10,15 @@ from flask_login import UserMixin
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True)
-    passwd_hash = db.Column(db.String(128))
-    email = db.Column(db.String(64))
+    account = db.Column(db.String(120),unique=True)
+    nickname = db.Column(db.String(120),default='小小肉')
+    password = db.Column(db.String(128))
+    email = db.Column(db.String(128),unique=True,nullable=True)
     confirmed = db.Column(db.Boolean, default=False)
-    image = db.Column(db.String(200), default='default.jpg')
+    # 头像
+    image = db.Column(db.String(200), nullable=True)
+    # 多币
+    duocoin = db.Column(db.String(128),default=0)
 
     # 在另一模型中添加反向引用
     # 参数1：关联的模型名
@@ -23,8 +27,11 @@ class User(UserMixin,db.Model):
     # 一对多的关系
     posts = db.relationship('Posts', backref='user', lazy='dynamic')
 
+    # 收藏的帖子
+    favorite = db.relationship('Posts', secondary='favorite', backref=db.backref('users', lazy='dynamic'), lazy='dynamic')
+
     # 购物车 多对多
-    shopping_car = db.relationship('Shopping', secondary='collections', backref=db.backref('users', lazy='dynamic'), lazy='dynamic')
+    shopping_car = db.relationship('Shoppingcar', secondary='shopping', backref=db.backref('users', lazy='dynamic'), lazy='dynamic')
 
     # 若使用一对一，添加userlist=Flase
     # posts = db.relationship('Posts',backref='user',lazy='dynamic')
@@ -90,26 +97,27 @@ class User(UserMixin,db.Model):
             return False
         if not user.confirmed:
             user.confirmed = True
-            db.session.add(user)
-        return True
-
-    # 修改邮箱的激活
-    @staticmethod
-    def change_email_activate_token(token):
-        s = Serializer(current_app.config['SECRET_KEY'])
-        try:
-            data = s.loads(token)
-        except BadSignature:
-            flash('无效的token')
-            return False
-        except SignatureExpired:
-            flash('token已失效')
-            return False
-        print(data.get('uid'),'======================')
-        user = User.query.get(data.get('uid'))
         user.email = data.get('email')
         db.session.add(user)
         return True
+
+    # # 修改邮箱的激活
+    # @staticmethod
+    # def change_email_activate_token(token):
+    #     s = Serializer(current_app.config['SECRET_KEY'])
+    #     try:
+    #         data = s.loads(token)
+    #     except BadSignature:
+    #         flash('无效的token')
+    #         return False
+    #     except SignatureExpired:
+    #         flash('token已失效')
+    #         return False
+    #     print(data.get('uid'),'======================')
+    #     user = User.query.get(data.get('uid'))
+    #     user.email = data.get('email')
+    #     db.session.add(user)
+    #     return True
 
 
     # 判断是否收藏了指定帖子

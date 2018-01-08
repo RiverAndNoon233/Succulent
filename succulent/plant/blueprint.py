@@ -1,11 +1,14 @@
 from plant.views.duoduo.main import main
 from plant.views.mine.login import login
-
+from plant.views.mine.register import regist
+from plant.views.mine.change import change
 
 #蓝本配置
 DEFAULT_BLUEPRINT = (
-    (main,''),
-    (login,'/login'),
+    (main, ''),
+    (login, '/user'),
+    (regist, '/user'),
+    (change, '/user'),
 
 )
 
