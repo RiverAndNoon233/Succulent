@@ -2,13 +2,23 @@ from plant.views.duoduo.main import main
 from plant.views.mine.login import login
 from plant.views.mine.register import regist
 from plant.views.mine.change import change
+<<<<<<< HEAD
+<<<<<<< HEAD
+from plant.views.mine.myposts import myposts
+=======
+=======
+>>>>>>> be85942f0d714ed59c0d69d143a763b7dcaa1b5b
+from plant.views.shop.shop import shop
 
+>>>>>>> 7f7e5be0508532fdedeb556641b4b58cef196c08
 #蓝本配置
 DEFAULT_BLUEPRINT = (
     (main, ''),
     (login, '/user'),
     (regist, '/user'),
+    (myposts,'/user'),
     (change, '/user'),
+    (shop, '/shop'),
 
 )
 

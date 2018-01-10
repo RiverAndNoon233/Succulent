@@ -12,7 +12,7 @@ class User(UserMixin,db.Model):
     id = db.Column(db.Integer, primary_key=True)
     account = db.Column(db.String(120),unique=True)
     nickname = db.Column(db.String(120),default='小小肉')
-    password = db.Column(db.String(128))
+    passwd_hash = db.Column(db.String(128))
     email = db.Column(db.String(128),unique=True,nullable=True)
     confirmed = db.Column(db.Boolean, default=False)
     # 头像
@@ -42,13 +42,13 @@ class User(UserMixin,db.Model):
         raise AttributeError('密码是不可读属性')
 
     # 设置密码，加密存储
-    @password.setter
-    def password(self, password):
-        self.passwd_hash = generate_password_hash(password)
-
-    # 密码校验
-    def verify_password(self, password):
-        return check_password_hash(self.passwd_hash,password)
+    # @password.setter
+    # def password(self, password):
+    #     self.passwd_hash = generate_password_hash(password)
+    #
+    # # 密码校验
+    # def verify_password(self, password):
+    #     return check_password_hash(self.passwd_hash,password)
 
     # 生成激活的token
     def generate_activate_token(self, expires_in=3600,uid=None, email=None):

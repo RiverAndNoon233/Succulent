@@ -6,8 +6,8 @@ from flask import jsonify
 myposts = Blueprint('myposts', __name__)
 
 
-@myposts.route('/myposts/', methods=['GET'])
-def myposts():
+@myposts.route('/myposts/', methods=['POST'])
+def mypost():
     uid = request.get_json().get('uid')
     posts = Posts.query.filter_by(uid=uid)
     data = {

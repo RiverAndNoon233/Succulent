@@ -6,7 +6,7 @@ from flask import jsonify
 login = Blueprint('login', __name__)
 
 
-@login.route('/login', methods=['get'])
+@login.route('/login', methods=['POST'])
 def logined():
     # 获取通过url请求传参的数据
     # username = request.values.get('account')
