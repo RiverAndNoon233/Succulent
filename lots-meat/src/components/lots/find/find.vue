@@ -1,6 +1,8 @@
 <template>
     <div class="find-to">
-        <find-head></find-head>
+        <div class="header">
+             <find-head></find-head>
+        </div>
         <find-box></find-box>
         <router-view></router-view>
     </div>
@@ -17,6 +19,8 @@ import FindBox from './find-box.vue'
     }        
 </script>
 
-<style>
-    
+<style lang="scss" scoped>
+    .header{
+        height:44px;
+    }
 </style>
