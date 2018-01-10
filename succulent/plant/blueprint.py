@@ -4,8 +4,11 @@ from plant.views.mine.register import regist
 from plant.views.mine.change import change
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from plant.views.mine.myposts import myposts
 =======
+=======
+>>>>>>> be85942f0d714ed59c0d69d143a763b7dcaa1b5b
 =======
 >>>>>>> be85942f0d714ed59c0d69d143a763b7dcaa1b5b
 from plant.views.shop.shop import shop
