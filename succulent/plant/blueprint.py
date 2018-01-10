@@ -2,6 +2,7 @@ from plant.views.duoduo.main import main
 from plant.views.mine.login import login
 from plant.views.mine.register import regist
 from plant.views.mine.change import change
+from plant.views.shop.shop import shop
 
 #蓝本配置
 DEFAULT_BLUEPRINT = (
@@ -9,6 +10,7 @@ DEFAULT_BLUEPRINT = (
     (login, '/user'),
     (regist, '/user'),
     (change, '/user'),
+    (shop, '/shop'),
 
 )
 
