@@ -18,8 +18,9 @@ class Goods(db.Model):
 
 
 class Shoppingcar(db.Model):
-    __tablename__ = 'shopcar'
+    __tablename__ = 'shoppingcar'
     id = db.Column(db.Integer, primary_key=True)
+    gid = db.Column(db.Integer)
     #数量
     num = db.Column(db.Integer,default=0)
     #用户
