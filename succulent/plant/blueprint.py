@@ -1,20 +1,23 @@
 from plant.views.duoduo.main import main
+from plant.views.found.writepublish import writepublish
 from plant.views.mine.login import login
 from plant.views.mine.register import regist
 from plant.views.mine.change import change
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+# <<<<<<< HEAD
+# <<<<<<< HEAD
+# <<<<<<< HEAD
 from plant.views.mine.myposts import myposts
-=======
-=======
->>>>>>> be85942f0d714ed59c0d69d143a763b7dcaa1b5b
-=======
->>>>>>> be85942f0d714ed59c0d69d143a763b7dcaa1b5b
-from plant.views.shop.shop import shop
+# =======
+# =======
+# >>>>>>> be85942f0d714ed59c0d69d143a763b7dcaa1b5b
+# =======
+# >>>>>>> be85942f0d714ed59c0d69d143a763b7dcaa1b5b
+# from plant.views.shop.shop import shop
 
->>>>>>> 7f7e5be0508532fdedeb556641b4b58cef196c08
+# >>>>>>> 7f7e5be0508532fdedeb556641b4b58cef196c08
 #蓝本配置
+from plant.views.shop.forms.shop import shop
+
 DEFAULT_BLUEPRINT = (
     (main, ''),
     (login, '/user'),
@@ -22,6 +25,7 @@ DEFAULT_BLUEPRINT = (
     (myposts,'/user'),
     (change, '/user'),
     (shop, '/shop'),
+    (writepublish,'/writepublish'),
 
 )
 
