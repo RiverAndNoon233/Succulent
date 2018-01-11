@@ -16,7 +16,7 @@ import newDayKnow from "@/components/lots/modules/mustKnow-vue/newDay-know"
 //以下四个分别是 多多 商城 我的 。。
 import lotTwo from '@/components/lots/lotTwo'
 import Find from "@/components/lots/find/find"
-import Shop from "@/components/lots/shop"
+import Shop from "@/components/lots/shop/shop"
 import Mine from "@/components/lots/mine/Mine"
 
 //未登陆和注册时路由
