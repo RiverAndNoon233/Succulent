@@ -1,5 +1,4 @@
 from flask import Blueprint, request
-from sqlalchemy import desc
 
 from plant.extensions import api, Resource, db
 from plant.models import User, Posts, Image
@@ -19,6 +18,7 @@ class WritepublishAPI(Resource):
         user_id=request.json['user_id']
         #查询出发帖用户
         user=User.query.filter_by(id=int(user_id)).first()
+        # print(user.nickname)
         #获取图片：
         try:
             images=request.json['images']
@@ -45,7 +45,7 @@ class WritepublishAPI(Resource):
                     img = Image()
                     img.url = one_image
                     post=Posts.query.filter_by(title=title).first()
-                    print(post)
+                    # print(post)
                     img.post=post
                     db.session.add(img)
             return {'code':200,'msg':'success'}
