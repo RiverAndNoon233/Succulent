@@ -38,7 +38,7 @@ class Get_new_essay_API(Resource):
             #得到用户名
             one_data['user_name']=user.nickname
             #得到文章标题
-            one_data['post_title']=one_post.title
+            one_data['essay_title']=one_post.title
             #得到文章的图片
             images=one_post.image
             #遍历图片得到前三张图片
@@ -50,9 +50,11 @@ class Get_new_essay_API(Resource):
                 i=i+1
                 if i>3:
                     break
-            one_data['images']=image_list
+            one_data['essay_image']=image_list
             #得到文章时间
-            one_data['post_time']=one_post.timestamp.strftime('%Y-%m-%d %H:%M:%S')
+            one_data['essay_time']=one_post.timestamp.strftime('%Y-%m-%d %H:%M:%S')
+            #得到文章的浏览量
+            one_data['essay_views_num']=one_post.count
 
             data.append(one_data)
 
