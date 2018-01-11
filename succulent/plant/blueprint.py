@@ -12,7 +12,11 @@ from plant.views.mine.myposts import myposts
 # >>>>>>> be85942f0d714ed59c0d69d143a763b7dcaa1b5b
 # =======
 # >>>>>>> be85942f0d714ed59c0d69d143a763b7dcaa1b5b
+<<<<<<< HEAD
 # from plant.views.shop.shop import shop
+=======
+from plant.views.shop.shop import shop
+>>>>>>> 2501b6d5a12b459ad381b2a09d9a6a605b114d79
 
 # >>>>>>> 7f7e5be0508532fdedeb556641b4b58cef196c08
 #蓝本配置
