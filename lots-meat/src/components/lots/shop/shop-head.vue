@@ -1,12 +1,12 @@
 <template>
-    <div class="shop">
-    112312
+    <div class="shop-head">
+        <span>商城</span>
     </div>
 </template>
 
 <script>
     export default {
-        name:"shop"
+        name:"shop-head"
     }        
 </script>
 

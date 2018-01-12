@@ -1,4 +1,5 @@
 from plant.views.duoduo.main import main
+from plant.views.found.get_new_essay import get_new_essay
 from plant.views.found.writepublish import writepublish
 from plant.views.mine.login import login
 from plant.views.mine.register import regist
@@ -29,6 +30,7 @@ DEFAULT_BLUEPRINT = (
     (change, '/user'),
     (shop, '/shop'),
     (writepublish,'/writepublish'),
+    (get_new_essay,'/get_new_essay'),
 
 )
 
