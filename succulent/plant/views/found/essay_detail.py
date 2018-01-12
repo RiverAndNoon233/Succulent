@@ -15,6 +15,11 @@ class Essay_detail_API(Resource):
         #判断，如果获取文章为空，则返回404错误
         if not post:
             return {'code':404,'msg':'没有获取到数据','data':None}
+
+        # 并把文章的浏览量加1：
+        post.count = post.count + 1
+        db.session.add(post)
+
         #得到这个文章的相关信息，并组成一个字典
         post_dict={}
         post_dict['essay_id']=post.id
