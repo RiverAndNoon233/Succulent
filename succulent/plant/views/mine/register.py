@@ -7,40 +7,41 @@ from plant.email import send_mail
 from flask import jsonify
 
 regist = Blueprint('register', __name__)
-@regist.route('/regist/', methods=['POST'])
+@regist.route('/regist', methods=['POST'])
 def register():
-    account = request.get_json().get('account')
-    email = request.get_json().get('email')
-    password = request.get_json().get('password')
+    account = request.get_json('account').get('account')
+    email = request.get_json('email').get('email')
+    password = request.get_json('password').get('password')
     # 创建用户对象
-    user = User.objects(account=account)
-    # 判断此用户是否已存在
-    if user:
-        return jsonify({'code': 1, 'msg': '该用户已经存在,注册失败'})
-    if User.query.filter_by(email=email).first():
-        return jsonify({'code': 2, 'msg': '此邮箱已注册,注册失败'})
-
+    print(account,'========================================')
+    user = User()
     user.account = account
-    user.password = password
+    user.passwd_hash = password
     # user.email = email
-    db.session.add(user)
+    # 判断此用户是否已存在
+    if User.query.filter_by(account=account).first():
+        return jsonify({'code': 1, 'msg': '该用户已经存在,注册失败'})
+    elif User.query.filter_by(email=email).first():
+        return jsonify({'code': 2, 'msg': '此邮箱已注册,注册失败'})
+    # db.session.add(user)
     # 此时数据还没有保存到数据库中，没有id字段值，下面生成token时需要使用id
     # 因此等请求结束再提交时来不及的，故需要手动提交
-    db.session.commit()
-    token = user.generate_activate_token(uid=user.id,email=email)
+    # db.session.commit()
+    token = user.generate_activate_token(account=account,password=password,email=email)
     # 这里卡壳了...........
-    send_mail(user.email, '账户激活', 'email/activate', account=account, token=token)
+    send_mail(email, '账户激活', 'email/activate', account=account, token=token)
     # 给出flash提示消息
     # flash('邮件已发送，请点击链接完成用户激活')
-    return jsonify({'code': 0, 'msg': '注册成功'})
+    return jsonify({'code': 0, 'msg': '激活邮箱已发送'})
 
-# 账户的激活  =================需要完善====================
-# @regist.route('/activate/<token>',methods=['GET','POST'])
-# def activate(token):
-#     if User.check_activate_token(token):
-#         return redirect(url_for('user.login'))
-#     else:
-#         return redirect(url_for('main.index'))
+# 账户的激活
+@regist.route('/activate/<token>',methods=['GET','POST'])
+def activate(token):
+    print(222)
+    if User.check_activate_token(token):
+        return jsonify({'code': 0, 'msg': '注册成功'})
+    else:
+        return jsonify({'code': 1, 'msg': '链接已失效'})
 
 
 

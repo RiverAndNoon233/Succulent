@@ -36,12 +36,17 @@ def goods_details():
     goods = Goods.query.get(gid)
     if goods is None:
         return jsonify({'code':0,'msg':404})
+<<<<<<< HEAD
     images_list = []
     images = goods.images.all()
     for image in images:
     	images_list.append(image.img)
 
     return jsonify({'code':1,'msg':'success','data':{'goods_name':goods.good_name,'gid':goods.id,'price':goods.price,'image':images_list,'introduction':goods.introduction}})
+=======
+    
+    return jsonify({'goods_name':goods.good_name,'gid':goods.id,'price':goods.price,'image':goods.image,'introduction':goods.introduction})
+>>>>>>> e419d429b5d10b184a23fab7b9dd456f386d10e8
 
 #购物车页面
 @shop.route('/myshop_car/')

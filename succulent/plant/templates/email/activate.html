@@ -1,0 +1,8 @@
+{##}
+{#{% if account %}#}
+{#<h1>Hello {{ email }}</h1>#}
+{#    <p>点击链接以完成激活，<a href="{{ url_for('register.activate',token=token,_external=True) }}" >激活</a></p>#}
+{#{% else %}#}
+{#    <h1>Hello {{ email }}</h1>#}
+{#    <p>点击链接以完成激活，<a href="{{ url_for('change.activate',token=token,_external=True) }}" >激活</a></p>#}
+{#{% endif %}#}
