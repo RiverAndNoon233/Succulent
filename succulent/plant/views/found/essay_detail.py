@@ -1,4 +1,3 @@
-import json
 
 from flask import Blueprint, request
 
@@ -36,9 +35,7 @@ class Essay_detail_API(Resource):
 
         #data数据集合：
         data=[post_dict]
-        #将data数据转化为json格式的字符串
-        json_data=json.dumps(data)
 
-        return {'code':200,'msg':'成功得到数据','data':json_data}
+        return {'code':200,'msg':'成功得到数据','data':data}
 
 api.add_resource(Essay_detail_API,'/api/v1/found/essay_detail')

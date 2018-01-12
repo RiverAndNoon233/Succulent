@@ -60,8 +60,7 @@ class Get_new_essay_API(Resource):
 
             data.append(one_data)
 
-        json_data=json.dumps(data)
 
-        return {'code':200,'msg':'获取成功','data':json_data}
+        return {'code':200,'msg':'获取成功','data':data}
 
 api.add_resource(Get_new_essay_API,'/api/v1/found/new_essay')

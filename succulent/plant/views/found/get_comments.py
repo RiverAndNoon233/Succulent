@@ -32,9 +32,7 @@ class Get_comments_API(Resource):
             one_data['comment_id']=one_comment.id
 
             data.append(one_data)
-        #将列表转换为json格式的字符串
-        json_data=json.dumps(data)
 
-        return {'code':200,'msg':'成功获取信息','data':json_data}
+        return {'code':200,'msg':'成功获取信息','data':data}
 
 api.add_resource(Get_comments_API,'/api/v1/found/show_comment')

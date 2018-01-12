@@ -56,8 +56,6 @@ class Kind_essay_API(Resource):
             one_data['essay_views_num']=one_post.count
             #将一个数据加入到总的数据集合当中
             data.append(one_data)
-        # 将总的数据集合转化为json格式的字符串
-        json_data=json.dumps(data)
-        return {'code':200,'msg':'获取成功','data':json_data}
+        return {'code':200,'msg':'获取成功','data':data}
 
 api.add_resource(Kind_essay_API,'/api/v1/found/kind_essay')
