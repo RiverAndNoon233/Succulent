@@ -9,10 +9,10 @@ login = Blueprint('login', __name__)
 @login.route('/login', methods=['POST'])
 def logined():
     # 获取通过url请求传参的数据
-    account = request.get_json('account').get('account')
+    account = request.get_json(True).get('account')
     # print(account)
     # 获取url请求传的密码，明文
-    password = request.get_json('password').get('password')
+    password = request.get_json(True).get('password')
     # 判断用户名、密码都不为空，如果不传用户名、密码则account和password为None
     if account and password:
         # 查询账号是否存在且密码是否与之匹配
@@ -26,6 +26,7 @@ def logined():
         # 以上都没错误 返回用户id
         data = {
             "uid":user.id,
+
             # "account": user.account,  # 账号
             # "password": user.password,
             # "nickname": user.nickname,  # 昵称

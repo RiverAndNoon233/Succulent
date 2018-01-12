@@ -102,14 +102,15 @@ class User(UserMixin,db.Model):
     # 修改邮箱的激活
     @staticmethod
     def change_email_activate_token(token):
+        print('=========================')
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
             data = s.loads(token)
         except BadSignature:
-            flash('无效的token')
+            # flash('无效的token')
             return False
         except SignatureExpired:
-            flash('token已失效')
+            # flash('token已失效')
             return False
         print(data.get('uid'),'======================')
         user = User.query.filter_by(id=data.get('uid')).first()

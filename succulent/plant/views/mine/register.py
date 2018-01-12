@@ -35,7 +35,7 @@ def register():
     return jsonify({'code': 0, 'msg': '激活邮箱已发送'})
 
 # 账户的激活
-@regist.route('/activate/<token>',methods=['GET','POST'])
+@regist.route('/activate1/<token>',methods=['GET','POST'])
 def activate(token):
     print(222)
     if User.check_activate_token(token):
