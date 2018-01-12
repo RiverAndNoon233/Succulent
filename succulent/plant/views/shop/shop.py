@@ -14,16 +14,13 @@ def showgoods():
     page = request.args.get('page', 1, int)
     if category is None:
          category = '1'
-
     paginates = Goods.query.filter_by(category=category).paginate(page,per_page=8,error_out=False)
     pages = paginates.pages
     goods = paginates.items
     for i in goods:
-        dic = {'goods_name':i.good_name,'gid':i.id,'price':i.price,'image':i.image,'count':i.count}
+        img = i.images.all()[0]
+        dic = {'goods_name':i.good_name,'gid':i.id,'price':i.price,'image':img.img,'count':i.count}
         ll.append(dic)
-
-
-
     return jsonify({'category':category,'page':page,'pages':pages,'data':ll})
 
 

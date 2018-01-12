@@ -5,13 +5,14 @@ from plant.extensions import db
 class Goods(db.Model):
     __tablename__ = 'goods'
     id = db.Column(db.Integer,primary_key=True)
+    
     good_name = db.Column(db.String(128))
     #价格
     price = db.Column(db.Float)
     # 简介
     introduction = db.Column(db.Text)
     #图片
-    images = db.relationship('Goods_img', backref='goods', lazy='dynamic')
+    images = db.relationship('Goods_img', backref='good', lazy='dynamic')
     # 分类
     category = db.Column(db.String)
     #购买次数
