@@ -46,7 +46,13 @@ def goods_details():
 
     
 
+<<<<<<< HEAD
   
+=======
+   # return jsonify({'goods_name':goods.good_name,'gid':goods.id,'price':goods.price,'image':goods.image,'introduction':goods.introduction})
+
+#     return jsonify({'goods_name':goods.good_name,'gid':goods.id,'price':goods.price,'image':goods.image,'introduction':goods.introduction})
+>>>>>>> da6619d78d5de5d77e36c2eca18d836a86a371d2
 
 
 
