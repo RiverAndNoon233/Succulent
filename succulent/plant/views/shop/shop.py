@@ -45,7 +45,11 @@ def goods_details():
     return jsonify({'code':1,'msg':'success','data':{'goods_name':goods.good_name,'gid':goods.id,'price':goods.price,'image':images_list,'introduction':goods.introduction}})
 
     
+<<<<<<< HEAD
     return jsonify({'goods_name':goods.good_name,'gid':goods.id,'price':goods.price,'image':goods.image,'introduction':goods.introduction})
+=======
+#     return jsonify({'goods_name':goods.good_name,'gid':goods.id,'price':goods.price,'image':goods.image,'introduction':goods.introduction})
+>>>>>>> 824b7807f939cbf3fb169f1caa80db17f6a8ed1f
 
 
 #购物车页面
