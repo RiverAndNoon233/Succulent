@@ -34,6 +34,7 @@ def goods_details():
     goods = Goods.query.get(gid)
     if goods is None:
         return jsonify({'code':0,'msg':404})
+    
     return jsonify({'goods_name':goods.good_name,'gid':goods.id,'price':goods.price,'image':goods.image,'introduction':goods.introduction})
 
 #购物车页面
