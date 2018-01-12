@@ -11,7 +11,7 @@ class Goods(db.Model):
     # 简介
     introduction = db.Column(db.Text)
     #图片
-    image = db.Column(db.String(256),nullable=True)
+    images = db.relationship('Goods_img', backref='goods', lazy='dynamic')
     # 分类
     category = db.Column(db.String)
 
@@ -26,3 +26,12 @@ class Shoppingcar(db.Model):
     #用户
     uid = db.Column(db.Integer,db.ForeignKey('users.id'))
 
+
+
+
+class Goods_img(db.Model):
+     id = db.Column(db.Integer, primary_key=True)
+     #图片
+     img = db.Column(db.String(256))
+     #一对多关联
+     goods = db.Column(db.Integer,db.ForeignKey('goods.id'))
