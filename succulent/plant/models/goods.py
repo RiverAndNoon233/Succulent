@@ -14,6 +14,8 @@ class Goods(db.Model):
     images = db.relationship('Goods_img', backref='goods', lazy='dynamic')
     # 分类
     category = db.Column(db.String)
+    #购买次数
+    count = db.Column(db.Integer)
 
 
 
