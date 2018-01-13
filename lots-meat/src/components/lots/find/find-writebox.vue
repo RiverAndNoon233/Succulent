@@ -8,13 +8,14 @@
        </div>
        <div class="find-writeimage">
            <div>  
-                <div style="padding:20px;">  
+                <div class="beatfather">  
                 <div class="show">  
                     <div class="picture" :style="'backgroundImage:url('+headerImage+')'"></div>  
                 </div>  
-                <div style="margin-top:20px;">  
-                    <input type="file" id="upload" accept="image" @change="upload">  
-                    <input type="file" id="upload" accept="image" @change="upload">  
+                <div>  
+                    <div class="beat">
+                        <input type="file" id="upload" accept="image"  multiple="true" @change="upload">  
+                    </div>
                     <label for="upload"></label>  
                 </div>  
                 </div>  
@@ -31,20 +32,23 @@
  import Exif from 'exif-js'  
   
 export default {  
-    name:"find-writebox",
+  name:"find-writebox",
   data () {  
     return {  
-      headerImage:'',picValue:''  
+      headerImage:[],
+      picValue:''
     }  
   },  
   mounted () { 
   },  
   methods: {  
     upload (e) {  
-      let files = e.target.files || e.dataTransfer.files;  
-      if (!files.length) return;  
-      this.picValue = files[0];  
-      this.imgPreview(this.picValue);  
+      let files = e.target.files || e.dataTransfer.files; 
+      if (!files.length) return; 
+      for(let i = 0;i < files.length;i ++){
+           this.picValue = files[i]; 
+            this.imgPreview(this.picValue); 
+      } 
     },  
     imgPreview (file) {  
       let self = this;  
@@ -68,15 +72,17 @@ export default {
             img.src = result;  
             //判断图片是否大于100K,是就直接上传，反之压缩图片  
             if (this.result.length <= (100 * 1024)) {  
-              self.headerImage = this.result;  
+              //self.headerImage = this.result;  
+              self.headerImage.push(this.result);
               self.postImg(); 
-                console.log(self.headerImage);  
+                //console.log(self.headerImage);  
             }else {  
               img.onload = function () {  
                 let data = self.compress(img,Orientation);  
-                self.headerImage = data;  
+                //self.headerImage = data; 
+                self.headerImage.push(data); 
                 self.postImg(); 
-                console.log(self.headerImage); 
+                //console.log(self.headerImage); 
               }  
             }  
           }   
@@ -85,6 +91,7 @@ export default {
       postImg () {  
         //这里写接口 
        console.log("1");
+      // console.log(this.headerImage)
       },  
       rotateImg (img, direction,canvas) {  
         //最小与最大旋转方向，图片旋转4次后回到原方向      
