@@ -34,6 +34,7 @@ import MyResetpass from "@/components/lots/mine/set/MyResetpass"
 import MyWallet from "@/components/lots/mine/set/MyWallet"
 //发现里面的二级路由
 import FindBoxDetail from "@/components/lots/find/Find-boxdetail"
+import FindWritePublish from "@/components/lots/find/find-writepublish"
 
 Vue.use(Router)
 
@@ -43,7 +44,8 @@ const routes = [
     {path:'/',redirect:'/lotindex'},
     
     {path:"/find-fo",name:'find-fo',component:Find,children:[
-      {path:"FindBoxDetail",name:"FindBoxDetail",component:FindBoxDetail}
+      {path:"FindBoxDetail",name:"FindBoxDetail",component:FindBoxDetail},
+      {path:"FindWritePublish",name:"FindWritePublish",component:FindWritePublish},
     ]},
     {path:"/shop-fo",name:'shop-fo',component:Shop},
     {path:"/mine-fo",name:'',component:Mine,children:[

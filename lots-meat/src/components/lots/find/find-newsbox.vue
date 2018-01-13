@@ -28,7 +28,7 @@ import axios from 'axios'
                 let that = this
                 axios.get('/static/api/find.json').then((res)=>{
                     that.news = res.data
-                    console.log(that.news);
+                    //console.log(that.news);
                 })
             }  
         },

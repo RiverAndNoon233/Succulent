@@ -1,5 +1,6 @@
 <template>
     <div class="router-items">
+        <!-- <router-view></router-view> -->
         <LotsBanner></LotsBanner>
         <lots-nav></lots-nav>
         <lot-box></lot-box>

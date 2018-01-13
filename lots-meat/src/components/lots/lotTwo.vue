@@ -1,18 +1,18 @@
 <template>
   <div class="lot-two">
-      <lotHead></lotHead> 
-      <lotHeadTwo></lotHeadTwo>
-      <router-view></router-view><!--二级路由显示-->
+    <lotHead></lotHead> 
+     <router-view></router-view>
+      <!-- <lotHeadTwo></lotHeadTwo> -->
   </div>
 </template>
 
 <script>  
 import lotHead from "./head/lotHead.vue"
-import lotHeadTwo from "./head/lotHeadTwo.vue"
+// import lotHeadTwo from "./head/lotHeadTwo.vue"
 export default {
     name:"lot-two",
     components: { 
-      lotHead,lotHeadTwo
+      lotHead
     }
 }
 </script>

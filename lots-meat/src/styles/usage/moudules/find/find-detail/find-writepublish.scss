@@ -1,0 +1,70 @@
+.find-writepublish{
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index:1000;
+    background:#d8d8d8;
+    .find-writehead{
+        padding:0 0.19rem;
+        width:100%;
+        height:44px;
+        background:#04b10a;
+        @include flexbox();
+        @include justify-content(space-between); 
+        @include align-items(center);
+        span{
+            color:#fff;
+            font-size:0.16rem;
+        }
+        b{
+            color:#fff;
+            font-size:0.13rem;
+            font-weight: normal;
+        }
+    }
+    .find-writetitel{
+        width:100%;
+        height:0.4rem;
+        @include border(0 0 1px,#cecece 0);
+        input{
+            border:none;
+            width:100%;
+            height:100%;
+            padding-left:0.2rem;
+            font-weight: 600;
+            color:#a1a1a1;
+        }
+    }
+    .find-writecontent{
+        width:100%;
+        height:2rem;
+        input{
+            border:none;
+            width:100%;
+            height:100%;
+            color:#d8d8d8;
+            font-size:0.13rem;
+            padding-left:0.2rem;
+        }
+    }
+    .find-writeimage{
+        margin-top:0.1rem;
+        width:100%;
+        height:1rem;
+        background:#fff;
+        position:relative;
+        input{
+            width:100%;
+            height:100%;
+            border:none;
+            //opacity:0;
+            padding-left:0.2rem;
+        }
+    }
+    .find-writekong{
+        margin-top:0.1rem;
+        width:100%;
+        height:2.83rem;
+        background:#fff;
+    }
+}
