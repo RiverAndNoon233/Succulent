@@ -1,25 +1,27 @@
 from flask import Blueprint, request
-from plant.models import User
+from plant.models import User,Posts
 
 from flask import jsonify
 
-myposts = Blueprint('myposts', __name__)
+myfavorite = Blueprint('myfavorite', __name__)
 
 
-@myposts.route('/myposts/', methods=['GET'])
-def myposts():
-    uid = request.get_json().get('uid')
-    user = User.query.filter_by(fid=uid).first()
-    data = user.favorite
-
+@myfavorite.route('/myfavorite/', methods=['POST'])
+def myfp():
+    uid = request.get_json(True).get('uid')
+    user = User.query.filter_by(id=uid).first()
+    data=[]
+    for posts in user.favorite:
     ########   卡壳了    ###########
-    # data = {
-    #     'id': posts.id,
-    #     'title': posts.title,
-    #     'content': posts.content,
-    #     'category': posts.category,
-    #     'count': posts.count,
-    #     'timestamp': posts.timestamp,
-    # }
-    return jsonify({'code': 200, 'msg': 'success', 'data': data})
+        data1 = {
+            'id': posts.id,
+            'title': posts.title,
+            'content': posts.content,
+            'category': posts.category,
+            'count': posts.count,
+            'timestamp': posts.timestamp,
+        }
+        data.append(data1)
+        print(data)
 
+    return jsonify({'code': 200, 'msg': 'success', 'data': data})

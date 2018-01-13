@@ -14,15 +14,14 @@ def showgoods():
     page = request.args.get('page', 1, int)
     if category is None:
          category = '1'
-
-    paginates = Goods.query.filter_by(category=category).paginate(page,per_page=20,error_out=False)
+    paginates = Goods.query.filter_by(category=category).paginate(page,per_page=8,error_out=False)
+    pages = paginates.pages
     goods = paginates.items
     for i in goods:
-        dic = {'goods_name':i.good_name,'gid':i.id,'price':i.price,'image':i.image}
+        img = i.images.all()[0]
+        dic = {'goods_name':i.good_name,'gid':i.id,'price':i.price,'image':img.img,'count':i.count}
         ll.append(dic)
-
-
-    return jsonify(ll)
+    return jsonify({'category':category,'page':page,'pages':pages,'data':ll})
 
 
 #商品详情
@@ -34,7 +33,19 @@ def goods_details():
     goods = Goods.query.get(gid)
     if goods is None:
         return jsonify({'code':0,'msg':404})
-    return jsonify({'goods_name':goods.good_name,'gid':goods.id,'price':goods.price,'image':goods.image,'introduction':goods.introduction})
+
+    images_list = []
+    images = goods.images.all()
+    for image in images:
+    	images_list.append(image.img)
+
+    return jsonify({'code':1,'msg':'success','data':{'goods_name':goods.good_name,'gid':goods.id,'price':goods.price,'image':images_list,'introduction':goods.introduction}})
+
+    
+
+  
+
+
 
 #购物车页面
 @shop.route('/myshop_car/')

@@ -42,21 +42,21 @@ class User(UserMixin,db.Model):
         raise AttributeError('密码是不可读属性')
 
     # 设置密码，加密存储
-    # @password.setter
-    # def password(self, password):
-    #     self.passwd_hash = generate_password_hash(password)
-    #
-    # # 密码校验
-    # def verify_password(self, password):
-    #     return check_password_hash(self.passwd_hash,password)
+    @password.setter
+    def password(self, password):
+        self.passwd_hash = generate_password_hash(password)
+
+    # 密码校验
+    def verify_password(self, password):
+        return check_password_hash(self.passwd_hash,password)
 
     # 生成激活的token
-    def generate_activate_token(self, expires_in=3600,uid=None, email=None):
+    def generate_activate_token(self, expires_in=3600,uid=None,account=None,password=None, email=None):
         # 创建用于生成token的类，需要传递密钥和有效期
         s = Serializer(current_app.config['SECRET_KEY'], expires_in=expires_in)
 
         # 生效包含有效信息(必须是字典数据)的token字符串
-        return s.dumps({'id': self.id, 'email':email,'uid':uid})
+        return s.dumps({'id': self.id, 'email':email,'uid':uid,'account':account,'password':password})
 
     # 找回密码的token
     def foundpw_activate_token(self, expires_in=3600, passwd=None, email=None):
@@ -75,7 +75,7 @@ class User(UserMixin,db.Model):
             return False
         user = User.query.filter_by(email=data.get('email')).first()
 
-        user.password = data.get('passwd')
+        user.password = (data.get('passwd'))
         db.session.add(user)
         return True
 
@@ -91,33 +91,33 @@ class User(UserMixin,db.Model):
         except SignatureExpired:
             flash('token已失效')
             return False
-        user = User.query.get(data.get('id'))
-        if not user:
-            flash('激活的账户不存在')
+        user = User()
+        user.confirmed = True
+        user.email = data.get('email')
+        user.passwd_hash = generate_password_hash(data.get('password'))
+        user.account = data.get('account')
+        db.session.add(user)
+        return True
+
+    # 修改邮箱的激活
+    @staticmethod
+    def change_email_activate_token(token):
+        print('=========================')
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except BadSignature:
+            # flash('无效的token')
             return False
-        if not user.confirmed:
-            user.confirmed = True
+        except SignatureExpired:
+            # flash('token已失效')
+            return False
+        print(data.get('uid'),'======================')
+        user = User.query.filter_by(id=data.get('uid')).first()
         user.email = data.get('email')
         db.session.add(user)
         return True
 
-    # # 修改邮箱的激活
-    # @staticmethod
-    # def change_email_activate_token(token):
-    #     s = Serializer(current_app.config['SECRET_KEY'])
-    #     try:
-    #         data = s.loads(token)
-    #     except BadSignature:
-    #         flash('无效的token')
-    #         return False
-    #     except SignatureExpired:
-    #         flash('token已失效')
-    #         return False
-    #     print(data.get('uid'),'======================')
-    #     user = User.query.get(data.get('uid'))
-    #     user.email = data.get('email')
-    #     db.session.add(user)
-    #     return True
 
 
     # 判断是否收藏了指定帖子

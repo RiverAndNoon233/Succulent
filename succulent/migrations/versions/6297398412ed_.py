@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: c51db434728b
+Revision ID: 6297398412ed
 Revises: 
-Create Date: 2018-01-10 22:21:29.063120
+Create Date: 2018-01-12 11:02:27.398472
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'c51db434728b'
+revision = '6297398412ed'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,7 +23,6 @@ def upgrade():
     sa.Column('good_name', sa.String(length=128), nullable=True),
     sa.Column('price', sa.Float(), nullable=True),
     sa.Column('introduction', sa.Text(), nullable=True),
-    sa.Column('image', sa.String(length=256), nullable=True),
     sa.Column('category', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -49,6 +48,13 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('account'),
     sa.UniqueConstraint('email')
+    )
+    op.create_table('goods_img',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('img', sa.String(length=256), nullable=True),
+    sa.Column('goods', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['goods'], ['goods.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -102,6 +108,7 @@ def downgrade():
     op.drop_table('shoppingcar')
     op.drop_index(op.f('ix_posts_rid'), table_name='posts')
     op.drop_table('posts')
+    op.drop_table('goods_img')
     op.drop_table('users')
     op.drop_index(op.f('ix_news_rid'), table_name='news')
     op.drop_table('news')
