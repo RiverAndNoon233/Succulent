@@ -1,10 +1,11 @@
 <template>
     <div class="find-to">
+        <router-view></router-view>
         <div class="header">
              <find-head></find-head>
         </div>
         <find-box></find-box>
-        <router-view></router-view>
+        <!-- <router-view></router-view> -->
     </div>
 </template>
 

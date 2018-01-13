@@ -8,7 +8,7 @@
 </template>
 
 <script>
-//import MineLogin from './MineLogin.vue'
+//mport MineLogin from './MineLogin.vue'
     export default {
         name:"mine",
         components:{

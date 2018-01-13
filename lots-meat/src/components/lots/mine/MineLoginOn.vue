@@ -1,28 +1,38 @@
 <template>
-    <div class="mine-login-on">
+    <div class="mine-login-on style-box">
+        
         <div class="loginonhead"><span>我</span></div>
-        <div class="personage">
+        <div class="mark">
+        <div class="personage" >
             <div class="personage-top">
-                <div>
-                    <img src="https://pic.maizuo.com/usr/default/maizuomoren66.jpg" />
+                <div >
+                    <img src="/static/images/10.jpg" />
                 </div>
                 <div>
-                    <p>用户名:<span>xxx</span></p>
-                    <p>积分 : <span>999</span>肉币 : <span>999</span></p>
-                    <p>新手上路</p>
+                    <div><div><span>积分 : {{data_nickname}}</span><span>新手上路</span></div></div>
+                    <p>{{data_nickname}}</p>
                     <!--<p>判断逻辑 当时间一定时显示这条数据</p>-->
                 </div>
             </div>
-            <div class="personage-bot">
+            <div style="width:100%;height:100%;background:url(/static/images/10.jpg) no-repeat;background-size:100% 100%; -webkit-filter: blur(10px) brightness(1); /* Chrome, Opera */
+            -moz-filter: blur(10px) brightness(1); 
+            -ms-filter: blur(10px) brightness(1);    
+            filter: blur(10px) brightness(1);position:absolute;top:0;z-index:-1;"></div>
+           </div>
+        
+        <div class="gray"></div>
+         <div class="personage-bot">
                 <ul>
                     <router-link v-for="nav_top in nav_tops" :key="nav_top.id" :to="nav_top.name" tag="li">{{nav_top.content}}</router-link>
                 </ul>
             </div>
-        </div>
         <div class="settingnape">
              <ul>
-                <li><i class="fa fa-user-circle-o"></i><span></span><span>1</span></li>
+                <router-link v-for="set in sets" :key="set.id" :to="set.name" tag="li"><i class="yo-ico" v-html="set.icon">{{set.icon}}</i><span>{{set.content}}</span><span class="yo-ico">&#xe503;</span></router-link>
+                <div class="logout" @click="delateItem()">退出登录</div>
             </ul>
+            
+        </div>
         </div>
     </div>
 </template>
@@ -35,39 +45,42 @@
         data(){
             return{
                 data:'',
+                data_nickname:'',
                 nav_tops:[
                     {id:1,content:"我的收藏",name:"/mine-fo/mycollect"},
-                    {id:2,content:"我的好友",name:"/mine-fo/myfriends"},
-                    {id:3,content:"我的发表",name:"/mine-fo/mypublish"},                
+                    {id:2,content:"我的发表",name:"/mine-fo/mypublish"},              
                 ],
-                // sets:[
-                //     {id:1,content:"我的草稿",name:"/mine-fo/mydraft"},
-                //     {id:2,content:"购物车",name:""},
-                //     {id:3,content:"买家中心",name:""},
-                //     {id:4,content:"卖家中心",name:""},
-                //     {id:5,content:"商户管理",name:""},
-                //     {id:6,content:"账号设置",name:""},
-                //     {id:7,content:"个人设置",name:""},                  
-                // ]
+                sets:[
+                    {id:1,content:"购物车",name:"/mine-fo/mycar",icon:'&#xe618;'},          
+                    {id:2,content:"我的钱包",name:"/mine-fo/mywallet",icon:"&#xe502;"},          
+                    {id:3,content:"修改密码",name:"/mine-fo/myresetpass",icon:"&#xe610;"},           
+                    {id:4,content:"修改邮箱",name:"/mine-fo/mymodifyemail",icon:"&#xe90a;"},           
+                    {id:5,content:"我的订单",name:"/mine-fo/myorderfrom",icon:"&#xe504;"},                               
+                ]
             }
         },
-        components:{
-
+        mounted(){  
+            let that=this
+            that.data = localStorage.getItem("user_info")
+            that.data = JSON.parse(that.data)
+            that.data_nickname = that.data.user_id
         },
-        created(){
-            var that =this
-            bus.$on("loginondata",(val)=>{
-                that.data=val
-                console.log(that.data)
-            })
-        },
-    }        
+        methods:{
+            delateItem(){
+                let that = this
+                localStorage.removeItem("user_info")
+                location.href="/mine-fo/minelogin"
+            }
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
     .mine-login-on{
         width:100%;
         height:100%;
+        
+            overflow-y:auto;
         .loginonhead{
             height:.44rem;
             background:#04b10a;
@@ -78,34 +91,59 @@
                 color:#fff;
             }
         }
+        .mark{
+        flex:1;
+        overflow-y:auto;
         .personage{
             width:100%;
-            height:1.9rem;
-            background:pink;
+            height:1.9rem;  
+            position:relative;
             .personage-top{
-                height:1.4rem;
-                display:flex;
-                justify-content:space-between; 
-                padding:.25rem 0;
-                border-bottom:1px solid #ccc;
+                padding-top:.2rem;
+                z-index:1111;
+                
+                
                 div:nth-of-type(1){
-                    width:1.35rem;
-                    text-align:center;
+                    display:flex;
+                    text-align:center;                
+                    justify-content:center; 
                     img{
-                        width:1rem;
-                        height:.9rem;
+                        width:.8rem;
+                        height:.8rem;
+                        border-radius:.4rem;
                     }
                 }
                 div:nth-of-type(2){
-                    flex:1;
-                    line-height:.3rem;
-                    span{
-                        padding-right:.06rem;
+                    position:relative;
+                    div{
+                        width:100%;
+                        position:absolute;
+                        padding:.1rem .8rem 0;
+                        div{
+                            width:100%;
+                            display:flex;
+                            justify-content:space-between; 
+                            color:#fff;                            
+                        }
+                        
+                    }
+                    p:nth-of-type(1){
+                        text-align:center;
+                        font-size:.2rem;
+                        padding-top:.1rem;
+                        color:#fff;
                     }
                 }
             }
-            .personage-bot{
+            
+        }
+        .gray{
+            height:.07rem;
+            background:#ccc;
+        }
+        .personage-bot{
                 height:.5rem;
+                background:#fff;
                 ul{
                     height:100%;
                     display:flex;
@@ -116,14 +154,42 @@
                     }
                 }
             }
-        }
         .settingnape{
+            background:#fff;
             ul{
+                height:3.72rem;
+                
+                background:#fff;
                 li{
                     width:100%;
-                    height:.35rem;
+                    height:.55rem;
+                    display:flex;
+                    justify-content:space-between; 
+                    align-items:center;
+                    padding:0 .1rem;
+                    i{
+                        display:inline-block;
+                        width:.3rem;
+                        font-size:.2rem;
+                        background:#03ab1a;
+                        text-align:center;
+                        color:#fff;
+                        border-radius:.06rem;
+                    }
+                    span:nth-of-type(1){
+                        padding-right:1.8rem;
+                    }
                 }
             }
+        }
+        .logout{
+            height:.4rem;
+            display:flex;
+            justify-content:center; 
+            align-items:center;
+            font-size:.2rem;
+            color:#04b10a;
+        }
         }
     }
 </style>
