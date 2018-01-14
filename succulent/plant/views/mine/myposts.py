@@ -1,12 +1,13 @@
 from flask import Blueprint, request
 from plant.models import Posts
-
 from flask import jsonify
+from ..common.loginChecking import LoginChecking
 
 myposts = Blueprint('myposts', __name__)
 
 
 @myposts.route('/myposts/', methods=['POST'])
+@LoginChecking.loginCheck
 def mypost():
     uid = request.get_json('uid').get('uid')
     data = []
