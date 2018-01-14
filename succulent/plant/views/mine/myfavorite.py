@@ -1,13 +1,13 @@
 from flask import Blueprint, request
 from plant.models import User,Posts
-from ..common.loginChecking import LoginChecking
+from ..common.loginChecking import loginCheck
 
 from flask import jsonify
 
 myfavorite = Blueprint('myfavorite', __name__)
 
 @myfavorite.route('/myfavorite/', methods=['POST'])
-@LoginChecking.loginCheck
+@loginCheck
 def myfp():
     uid = request.get_json(True).get('uid')
     user = User.query.filter_by(id=uid).first()
