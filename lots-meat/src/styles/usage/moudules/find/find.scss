@@ -1,5 +1,6 @@
 
 @import "./find-detail/find-boxdetail.scss";
+@import "./find-detail/find-writepublish.scss";
 .find-to{
     @include flexbox();
     @include flex-direction(column);

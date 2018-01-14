@@ -1,0 +1,24 @@
+.style-box{
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index:0;
+    background:#fff;
+    @include flexbox();
+    @include flex-direction(column);
+    .head{
+        height:.44rem;
+        background:#04b10a;
+        text-align:center;
+        line-height:.44rem;
+        color:#fff;
+        padding:0 .1rem;
+        i{
+            float:left;
+            line-height:.44rem;
+        }
+        span{
+            text-align:center;
+        }
+    }
+}

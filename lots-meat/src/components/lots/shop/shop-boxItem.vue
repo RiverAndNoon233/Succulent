@@ -1,10 +1,10 @@
 <template>
     <div class="shop-boxItem">
         <li>
-            <img src="/static/images/find4.jpg"/>
+            <img :src="info.image"/>
             <p>
-                <h4>黄丽</h4>
-                <h5><b>￥9.9</b><i>25人付款</i></h5>
+                <h4>{{info.goods_name}}</h4>
+                <h5><b>￥{{info.price}}</b><i>{{info.count}}人付款</i></h5>
             </p>
         </li>
     </div>

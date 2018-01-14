@@ -7,10 +7,14 @@ from .images import Image
 
 # 创建多对多的中间关联表,ORM自动维护
 favorite = db.Table('favorite',
-                       db.Column('user_id',db.Integer,db.ForeignKey('users.id')),
-                       db.Column('posts_id',db.Integer,db.ForeignKey('posts.id'))
-                       )
+                    db.Column('user_id', db.Integer,
+                              db.ForeignKey('users.id')),
+                    db.Column('posts_id', db.Integer,
+                              db.ForeignKey('posts.id'))
+                    )
 shopping = db.Table('shopping',
-                       db.Column('user_id',db.Integer,db.ForeignKey('users.id')),
-                       db.Column('Shoppingcar_id',db.Integer,db.ForeignKey('shoppingcar.id'))
-                       )
+                    db.Column('user_id', db.Integer,
+                              db.ForeignKey('users.id')),
+                    db.Column('Shoppingcar_id', db.Integer,
+                              db.ForeignKey('shoppingcar.id'))
+                    )

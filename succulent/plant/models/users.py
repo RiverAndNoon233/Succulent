@@ -33,6 +33,9 @@ class User(UserMixin,db.Model):
     # 购物车 多对多
     shopping_car = db.relationship('Shoppingcar', secondary='shopping', backref=db.backref('users', lazy='dynamic'), lazy='dynamic')
 
+    #用户评论新闻的关联
+    comment = db.relationship('News_comment',backref='user',lazy='dynamic')
+
     # 若使用一对一，添加userlist=Flase
     # posts = db.relationship('Posts',backref='user',lazy='dynamic')
 

@@ -12,7 +12,6 @@ import DetailHead from './find-detailhead.vue'
         components:{
            DetailHead
         },
-       
     }        
 </script>
 

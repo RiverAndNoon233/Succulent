@@ -31,7 +31,7 @@
         props:['newItem'],
         mounted(){
             this.ImageUrls = this.newItem.essay_image;
-            console.log(this.newItem.essay_image)
+            //console.log(this.newItem.essay_image)
         }
     }        
 </script>

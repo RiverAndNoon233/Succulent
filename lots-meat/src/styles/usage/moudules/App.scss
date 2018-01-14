@@ -1,11 +1,11 @@
 body{
+    -webkit-overflow-scroll:touch;
     #app{
          width: 100%;
          height: 100%;
         .exothecium{
             width: 100%;
-            height: 100%;  
-            background:#fff; 
+            height: 100%;   
             @include flexbox();
             @include flex-direction(column);
             @include justify-content(space-between);    
@@ -13,3 +13,5 @@ body{
     }
     
 }
+
+

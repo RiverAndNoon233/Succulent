@@ -1,6 +1,9 @@
 <template>
     <div class="shop-box">
-       <ul class="shops">
+       <ul class="shops"
+		  v-infinite-scroll="loadMore"
+		  infinite-scroll-disabled="loading"
+		  infinite-scroll-distance="8">
           <ShopBoxItem  v-for="shop in shops" :info='shop' :key='shop.gid'></ShopBoxItem>
         </ul>
     </div>
@@ -38,8 +41,8 @@ import { Toast } from 'mint-ui';
         		axios.get(url).then(res=>{
         			
         			Indicator.close();
-        			console.log(res.data)
-        			that.shops=that.shops.concat(res.data)
+        			//console.log(res.data)
+        			that.shops=that.shops.concat(res.data.data)
         			that.loading = false
         			if(that.page==res.data.pages){
         				that.isOver = true
@@ -50,7 +53,7 @@ import { Toast } from 'mint-ui';
         				return false
         			}
                     that.page++
-                    console.log(that.shops)
+                    //console.log(that.shops)
         		})
         	},
         	loadMore() {

@@ -2,7 +2,7 @@
     <div class="find-head">
         <b class="yo-ico">&#xe60b;</b>
         <span>发现</span>
-        <b class="yo-ico">&#xe71f;</b>
+        <router-link :to="'/find-fo/FindWritePublish'" tag="b" class="yo-ico">&#xe71f;</router-link>
     </div>
 </template>
 

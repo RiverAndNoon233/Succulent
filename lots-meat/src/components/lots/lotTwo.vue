@@ -1,8 +1,8 @@
 <template>
   <div class="lot-two">
-      <lotHead></lotHead> 
+    <lotHead></lotHead> 
+     <router-view></router-view>
       <!-- <lotHeadTwo></lotHeadTwo> -->
-      <router-view></router-view><!--二级路由显示-->
   </div>
 </template>
 
