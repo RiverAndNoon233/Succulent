@@ -7,7 +7,7 @@ from plant.email import send_mail
 from flask import jsonify
 
 regist = Blueprint('register', __name__)
-@regist.route('/regist', methods=['POST'])
+@regist.route('/regist/', methods=['POST'])
 def register():
     account = request.get_json('account').get('account')
     email = request.get_json('email').get('email')

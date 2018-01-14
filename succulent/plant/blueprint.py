@@ -29,7 +29,7 @@ DEFAULT_BLUEPRINT = (
     (regist, '/user'),
     (myposts,'/user'),
     (myfavorite,'/user'),
-    (change, '/user'),
+    (change,'/user'),
     (shop, '/shop'),
     (writepublish,'/writepublish'),
     (get_new_essay,'/get_new_essay'),

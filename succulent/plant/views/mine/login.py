@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template
+from flask import Blueprint, request, render_template, session
 from plant.models import User
 
 from flask import jsonify
@@ -6,7 +6,7 @@ from flask import jsonify
 login = Blueprint('login', __name__)
 
 
-@login.route('/login', methods=['POST'])
+@login.route('/login/', methods=['POST'])
 def logined():
     # 获取通过url请求传参的数据
     account = request.get_json(True).get('account')
@@ -19,14 +19,15 @@ def logined():
         user = User.query.filter_by(account=account).first()
         if not user:
             return jsonify({'code': 1, 'msg': '登陆失败,此用户不存在'})
-        elif password != user.passwd_hash:
+        elif not user.verify_password(password):
+            # print(user.passwd_hash)
             return jsonify({'code': 2, 'msg': '登录失败,密码输入错误'})
         elif user.confirmed == False:
             return jsonify({'code': 3, 'msg': '登录失败,用户邮箱未激活'})
+        session['session_id'] = user.id
         # 以上都没错误 返回用户id
         data = {
             "uid":user.id,
-
             # "account": user.account,  # 账号
             # "password": user.password,
             # "nickname": user.nickname,  # 昵称

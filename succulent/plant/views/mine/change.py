@@ -1,14 +1,15 @@
-from flask import Blueprint, request
+from flask import Blueprint, request,session,redirect,url_for
 from plant.models import User
 from plant.email import send_mail
 from flask import jsonify
 from plant.extensions import db
 from flask_login import login_user, logout_user, login_required, current_user
-
+from ..common.loginChecking import loginCheck
 change = Blueprint('change', __name__)
 
 # 修改密码
-@change.route('/changepd/', methods=['POST'])
+@change.route('/changepd/', methods=['POST'],endpoint='changepd')
+@loginCheck
 def changepd():
     uid = request.get_json(True).get('uid')
     oldpd = request.get_json(True).get('old_password')
@@ -24,7 +25,8 @@ def changepd():
         return jsonify({'code': 1, 'msg': '原密码输入错误'})
 
 # 修改邮箱
-@change.route('/changeEm/',methods=['POST'])
+@change.route('/changeEm/',methods=['POST'],endpoint='changeEm')
+@loginCheck
 def changeEm():
     uid = request.get_json(True).get('uid')
     # oldpd = request.get_json().get('old_email')
@@ -52,6 +54,7 @@ def activate(token):
         return jsonify({'code': 1, 'msg': '链接已失效'})
 
 # 修改头像
-@change.route('/changeIg/')
+@change.route('/changeIg/',endpoint='changeIg')
+@loginCheck
 def changeIg():
     pass
