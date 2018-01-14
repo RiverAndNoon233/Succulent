@@ -21,15 +21,20 @@ import Mine from "@/components/lots/mine/Mine"
 
 //未登陆和注册时路由
 import MineLogin from "@/components/lots/mine/MineLogin"
+import MineRegister from "@/components/lots/mine/MineRegister"
 import MineLoginOn from "@/components/lots/mine/MineLoginOn"
 
 //我的组件路由
 import MyPublish from "@/components/lots/mine/minetop/MyPublish"
 import MyCollect from "@/components/lots/mine/minetop/MyCollect"
-import MyFriends from "@/components/lots/mine/minetop/MyFriends"
-
+import MyCar from "@/components/lots/mine/set/MyCar"
+import MyModifyEmail from "@/components/lots/mine/set/MyModifyEmail"
+import MyOrderForm from "@/components/lots/mine/set/MyOrderForm"
+import MyResetpass from "@/components/lots/mine/set/MyResetpass"
+import MyWallet from "@/components/lots/mine/set/MyWallet"
 //发现里面的二级路由
 import FindBoxDetail from "@/components/lots/find/Find-boxdetail"
+import FindWritePublish from "@/components/lots/find/find-writepublish"
 
 Vue.use(Router)
 
@@ -39,7 +44,8 @@ const routes = [
     {path:'/',redirect:'/lotindex'},
     
     {path:"/find-fo",name:'find-fo',component:Find,children:[
-      {path:"FindBoxDetail",name:"FindBoxDetail",component:FindBoxDetail}
+      {path:"FindBoxDetail",name:"FindBoxDetail",component:FindBoxDetail},
+      {path:"FindWritePublish",name:"FindWritePublish",component:FindWritePublish},
     ]},
     {path:"/shop-fo",name:'shop-fo',component:Shop},
     {path:"/mine-fo",name:'',component:Mine,children:[
@@ -57,10 +63,15 @@ const routes = [
   			
        }},  	
       {path: 'mineloginon',name: 'mineloginon',component:MineLoginOn},
+      {path: 'mineregister',name: 'mineregister',component:MineRegister},      
       {path:'mycollect',name:"mycollect",component:MyCollect},
-      {path:'myfriends',name:"myfriends",component:MyFriends},
       {path:'mypublish',name:"mypublish",component:MyPublish},
       {path: 'minelogin',name: 'minelogin',component:MineLogin},
+      {path: 'mycar',name: 'mycar',component:MyCar},
+      {path: 'mymodifyemail',name: 'mymodifyemail',component:MyModifyEmail},
+      {path: 'myorderfrom',name: 'myorderfrom',component:MyOrderForm},
+      {path: 'myresetpass',name: 'myresetpass',component:MyResetpass},
+      {path: 'mywallet',name: 'mywallet',component:MyWallet},
     ]},
     //二级路由
     {path: '/lotindex',component:lotTwo,children:[
@@ -106,6 +117,16 @@ router.beforeEach(function(to,from,next){
   }
   store.commit('changeTitle_know',title)
   store.commit('changeType',type)
+	next()
+})
+
+router.beforeEach(function(to,from,next){
+  
+  if(!localStorage.user_info){
+    if(to.name=="mineloginon"){
+        location.href="/mine-fo/minelogin"
+    }
+  }
 	next()
 })
 //暴露路由模块

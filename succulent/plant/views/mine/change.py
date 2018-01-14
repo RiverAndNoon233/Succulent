@@ -10,9 +10,9 @@ change = Blueprint('change', __name__)
 # 修改密码
 @change.route('/changepd/', methods=['POST'])
 def changepd():
-    uid = request.get_json('uid').get('uid')
-    oldpd = request.get_json('uid').get('old_password')
-    newpd = request.get_json('uid').get('new_password')
+    uid = request.get_json(True).get('uid')
+    oldpd = request.get_json(True).get('old_password')
+    newpd = request.get_json(True).get('new_password')
     user = User.query.filter_by(id=uid).first()
     print(uid,"============================")
     if user.verify_password(oldpd):
@@ -26,9 +26,9 @@ def changepd():
 # 修改邮箱
 @change.route('/changeEm/',methods=['POST'])
 def changeEm():
-    uid = request.get_json('uid').get('uid')
+    uid = request.get_json(True).get('uid')
     # oldpd = request.get_json().get('old_email')
-    newEmail = request.get_json('uid').get('new_email')
+    newEmail = request.get_json(True).get('new_email')
 
     # 查询此用户
     user = User.query.filter_by(id=uid).first()
@@ -36,14 +36,14 @@ def changeEm():
     if User.query.filter_by(email=newEmail).first():
         return jsonify({'code': 1, 'msg': '此邮箱已经注册'})
     else:
-        # 发送验证邮件
+        # 把需要的信息塞到token里
         token = user.generate_activate_token(uid=user.id, email=newEmail)
-        # 这里卡壳了...........
+        # 发送验证邮件
         send_mail(newEmail, '账户验证', 'email/change', token=token)
         return jsonify({'code': 0, 'msg': '发送邮箱验证'})
 
 # 账户的激活
-@change.route('/activate/<token>', methods=['GET', 'POST'])
+@change.route('/activate2/<token>', methods=['GET', 'POST'])
 def activate(token):
     print(111)
     if User.change_email_activate_token(token):

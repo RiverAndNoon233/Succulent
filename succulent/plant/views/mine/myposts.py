@@ -8,14 +8,16 @@ myposts = Blueprint('myposts', __name__)
 
 @myposts.route('/myposts/', methods=['POST'])
 def mypost():
-    uid = request.get_json().get('uid')
-    posts = Posts.query.filter_by(uid=uid)
-    data = {
-        'id': posts.id,
-        'title': posts.title,
-        'content': posts.content,
-        'category': posts.category,
-        'count': posts.count,
-        'timestamp': posts.timestamp,
-    }
+    uid = request.get_json('uid').get('uid')
+    data = []
+    for posts in Posts.query.filter_by(uid=uid):
+        data1 = {
+            'id': posts.id,
+            'title': posts.title,
+            'content': posts.content,
+            'category': posts.category,
+            'count': posts.count,
+            'timestamp': posts.timestamp,
+        }
+        data.append(data1)
     return jsonify({'code': 200, 'msg': 'success', 'data': data})

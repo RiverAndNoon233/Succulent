@@ -14,6 +14,8 @@ class Posts(db.Model):
     category = db.Column(db.String)
     # 浏览量
     count = db.Column(db.Integer, default=0)
+    #点赞量：
+    praise_num=db.Column(db.Integer,default=0)
     #时间戳
     timestamp = db.Column(db.DateTime,default=datetime.utcnow)
     #添加关联外键，‘表名.字段’

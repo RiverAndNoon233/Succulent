@@ -12,14 +12,14 @@ class Get_new_essay_API(Resource):
     #post方法的api
     def post(self):
         #得到非必须的用户字段，user_id
-        user_id=request.json.get('user_id')
+        # user_id=request.json.get('user_id')
         #得到文章的页码数
         page=request.json.get('page')
         #分页查询文章
         posts=Posts.query.order_by(db.desc(Posts.timestamp))
 
         try:
-            page_posts=posts.paginate(page=page,per_page=1)
+            page_posts=posts.paginate(page=page,per_page=10)
         except:
             return {'code': 404, 'msg': '没有数据', 'data': None}
 
@@ -37,6 +37,8 @@ class Get_new_essay_API(Resource):
             one_data['user_icon']=user.image
             #得到用户名
             one_data['user_name']=user.nickname
+            #得到文章的id
+            one_data['essay_id']=one_post.id
             #得到文章标题
             one_data['essay_title']=one_post.title
             #得到文章的图片
@@ -58,8 +60,7 @@ class Get_new_essay_API(Resource):
 
             data.append(one_data)
 
-        json_data=json.dumps(data)
 
-        return {'code':200,'msg':'获取成功','data':json_data}
+        return {'code':200,'msg':'获取成功','data':data}
 
 api.add_resource(Get_new_essay_API,'/api/v1/found/new_essay')

@@ -4,6 +4,7 @@ from plant.views.found.writepublish import writepublish
 from plant.views.mine.login import login
 from plant.views.mine.register import regist
 from plant.views.mine.change import change
+from plant.views.mine.myfavorite import myfavorite
 # <<<<<<< HEAD
 # <<<<<<< HEAD
 # <<<<<<< HEAD
@@ -27,6 +28,7 @@ DEFAULT_BLUEPRINT = (
     (login, '/user'),
     (regist, '/user'),
     (myposts,'/user'),
+    (myfavorite,'/user'),
     (change, '/user'),
     (shop, '/shop'),
     (writepublish,'/writepublish'),
