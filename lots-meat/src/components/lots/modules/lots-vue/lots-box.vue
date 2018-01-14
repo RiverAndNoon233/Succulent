@@ -28,7 +28,7 @@ export default {
          axios.get('/static/api/hotartical.json').then((res)=>{
              that.hotarticals = res.data
          })
-     }  
+     }
   },
   created(){
       this. gethotartical()

@@ -1,5 +1,5 @@
 <template>
-        <li>
+        <li @click="detail">
             <div class="newsbox-top">
                 <img src="/static/images/find5.jpg">
                 <p class="newsbox-p">
@@ -29,6 +29,11 @@
             }
         },
         props:['newItem'],
+        methods:{
+            detail(){
+                this.$router.push({path:'/lotindex/lotBoxDetail'});
+            } 
+        },
         mounted(){
             this.ImageUrls = this.newItem.essay_image;
             //console.log(this.newItem.essay_image)

@@ -13,6 +13,8 @@ import newShopKnow from "@/components/lots/modules/mustKnow-vue/newShop-know"
 import newPlantKnow from "@/components/lots/modules/mustKnow-vue/newPlant-know"
 import newDayKnow from "@/components/lots/modules/mustKnow-vue/newDay-know"
 
+import lotBoxDetail from "@/components/lots/modules/lots-vue/lots-boxDetail"
+
 //以下四个分别是 多多 商城 我的 。。
 import lotTwo from '@/components/lots/lotTwo'
 import Find from "@/components/lots/find/find"
@@ -83,7 +85,8 @@ const routes = [
       {path: 'newPersonKnow',name: 'newPersonKnow',component:newPersonKnow},
       {path: 'newShopKnow',name: 'newShopKnow',component:newShopKnow},
       {path: 'newPlantKnow',name: 'newPlantKnow',component:newPlantKnow},
-      {path: 'newDayKnow',name: 'newDayKnow',component:newDayKnow}
+      {path: 'newDayKnow',name: 'newDayKnow',component:newDayKnow},
+      {path: 'lotBoxDetail',name: 'lotBoxDetail',component:lotBoxDetail}
     ]
     },    
     {path:'/**',redirect:'/lotindex'}
