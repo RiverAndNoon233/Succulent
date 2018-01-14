@@ -15,7 +15,7 @@ class News(db.Model):
     # 时间戳
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     # 关联图片一对多关系
-    images = db.relationship('News_image', backref='news_id', lazy='dynamic')
+    images = db.relationship('News_image', backref='newsid', lazy='dynamic')
     # 评论
     comment = db.relationship('News_comment', backref='c_news', lazy='dynamic')
 
@@ -32,6 +32,8 @@ class News_comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # 评论内容
     context = db.Column(db.String(1024))
+    # 评论时间
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     # 文章关联
     news_id = db.Column(db.Integer, db.ForeignKey('news.id'))
     # 用户关联
