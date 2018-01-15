@@ -9,7 +9,7 @@ class Get_visited_nums_API(Resource):
         # 得到文章的页码数
         page = request.json.get('page')
         # 分页查询文章,按照浏览量排序
-        posts = Posts.query.order_by(db.desc(Posts.count))
+        posts = Posts.query.order_by(db.desc(Posts.count)).filter_by(rid=0)
 
         #判断文章输入的页数是否在正确的范围内，不在则返回404
         try:

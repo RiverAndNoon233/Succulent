@@ -10,7 +10,7 @@ class Home_new_essay_API(Resource):
         # 得到文章的页码数
         page = request.json.get('page')
         #分页查询文章，并按照时间进行降序排序
-        posts=Posts.query.order_by(db.desc(Posts.timestamp))
+        posts=Posts.query.order_by(db.desc(Posts.timestamp)).filter_by(rid=0)
 
         #判断文章输入的页数是否在正确的范围内，不在则返回404
         try:

@@ -13,7 +13,7 @@ class Home_search_essay_API(Resource):
         #得到文章传来的搜索关键词
         words=request.json.get('words')
         # 分页查询文章,按照模糊查询，查询是否包含该关键词，查询文章标题和文章正文内容
-        posts = Posts.query.filter(or_(Posts.title.contains(words),Posts.content.contains(words)))
+        posts = Posts.query.filter(or_(Posts.title.contains(words),Posts.content.contains(words))).filter_by(rid=0)
 
         #判断文章输入的页数是否在正确的范围内，不在则返回404
         try:
