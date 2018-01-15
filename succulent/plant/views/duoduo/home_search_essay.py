@@ -1,19 +1,23 @@
-
 from flask import  request
+from sqlalchemy import or_
 
 from plant.extensions import api, Resource, db, moment
 from plant.models import User, Posts, Image
 
-class Get_visited_nums_API(Resource):
+#主页搜索功能的API
+
+class Home_search_essay_API(Resource):
     def post(self):
         # 得到文章的页码数
         page = request.json.get('page')
-        # 分页查询文章,按照浏览量排序
-        posts = Posts.query.order_by(db.desc(Posts.count))
+        #得到文章传来的搜索关键词
+        words=request.json.get('words')
+        # 分页查询文章,按照模糊查询，查询是否包含该关键词，查询文章标题和文章正文内容
+        posts = Posts.query.filter(or_(Posts.title.contains(words),Posts.content.contains(words)))
 
         #判断文章输入的页数是否在正确的范围内，不在则返回404
         try:
-            page_posts=posts.paginate(page=page,per_page=10)
+            page_posts=posts.paginate(page=int(page),per_page=10)
         except:
             return {'code': 404, 'msg': '没有数据', 'data': None}
 
@@ -50,4 +54,4 @@ class Get_visited_nums_API(Resource):
 
         return {'code': 200, 'msg': '获取成功', 'data': data}
 
-api.add_resource(Get_visited_nums_API, '/api/v1/index/hotartical')
+api.add_resource(Home_search_essay_API, '/api/v1/home/search_essay')
