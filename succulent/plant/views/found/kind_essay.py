@@ -13,7 +13,7 @@ class Kind_essay_API(Resource):
         page=request.json.get('page')
 
         #分页查询文章
-        posts=Posts.query.order_by(db.desc(Posts.timestamp)).filter_by(category=kind)
+        posts=Posts.query.order_by(db.desc(Posts.timestamp)).filter_by(category=kind).filter_by(rid=0)
 
         try:
             page_posts=posts.paginate(page=page,per_page=10)

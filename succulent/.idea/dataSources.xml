@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="succulent_dev" uuid="813ebc1a-26e2-499b-868e-341b3e9d49ec">
+    <data-source source="LOCAL" name="succulent_dev" uuid="3931fbc2-af30-4ed6-b60e-644a198304ef">
       <driver-ref>aae51529-20b1-4327-9658-8b2b3d48a526</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 6297398412ed
+Revision ID: 18ad0f6e2985
 Revises: 
-Create Date: 2018-01-12 11:02:27.398472
+Create Date: 2018-01-15 15:03:02.509111
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '6297398412ed'
+revision = '18ad0f6e2985'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,18 +24,18 @@ def upgrade():
     sa.Column('price', sa.Float(), nullable=True),
     sa.Column('introduction', sa.Text(), nullable=True),
     sa.Column('category', sa.String(), nullable=True),
+    sa.Column('count', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('news',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('rid', sa.Integer(), nullable=True),
     sa.Column('title', sa.String(length=128), nullable=True),
     sa.Column('content', sa.Text(), nullable=True),
     sa.Column('count', sa.Integer(), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('title')
     )
-    op.create_index(op.f('ix_news_rid'), 'news', ['rid'], unique=False)
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('account', sa.String(length=120), nullable=True),
@@ -56,6 +56,23 @@ def upgrade():
     sa.ForeignKeyConstraint(['goods'], ['goods.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('news_comment',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('context', sa.String(length=1024), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
+    sa.Column('news_id', sa.Integer(), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['news_id'], ['news.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('news_image',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('img', sa.String(length=256), nullable=True),
+    sa.Column('news_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['news_id'], ['news.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('rid', sa.Integer(), nullable=True),
@@ -63,6 +80,7 @@ def upgrade():
     sa.Column('content', sa.Text(), nullable=True),
     sa.Column('category', sa.String(), nullable=True),
     sa.Column('count', sa.Integer(), nullable=True),
+    sa.Column('praise_num', sa.Integer(), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('uid', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['uid'], ['users.id'], ),
@@ -108,9 +126,10 @@ def downgrade():
     op.drop_table('shoppingcar')
     op.drop_index(op.f('ix_posts_rid'), table_name='posts')
     op.drop_table('posts')
+    op.drop_table('news_image')
+    op.drop_table('news_comment')
     op.drop_table('goods_img')
     op.drop_table('users')
-    op.drop_index(op.f('ix_news_rid'), table_name='news')
     op.drop_table('news')
     op.drop_table('goods')
     # ### end Alembic commands ###

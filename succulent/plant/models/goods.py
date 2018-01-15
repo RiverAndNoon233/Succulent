@@ -10,7 +10,7 @@ class Goods(db.Model):
     #价格
     price = db.Column(db.Float)
     # 简介
-    introduction = db.Column(db.Text)
+    introduction = db.Column(db.Text())
     #图片
     images = db.relationship('Goods_img', backref='good', lazy='dynamic')
     # 分类
