@@ -6,7 +6,7 @@ from plant.models import User, Posts, Image
 
 #主页搜索功能的API
 
-class Home_search_essay_API(Resource):
+class Search_essay_API(Resource):
     def post(self):
         # 得到文章的页码数
         page = request.json.get('page')
@@ -54,4 +54,4 @@ class Home_search_essay_API(Resource):
 
         return {'code': 200, 'msg': '获取成功', 'data': data}
 
-api.add_resource(Home_search_essay_API, '/api/v1/home/search_essay')
+api.add_resource(Search_essay_API, '/api/v1/found/search_essay')
