@@ -24,6 +24,10 @@ class WritepublishAPI(Resource):
             images=request.json['images']
         except:
             images=None
+
+        #如果数据库中已经存在这个标题，则返回503
+        if Posts.query.filter_by(title=title).first():
+            return {'code': 503, "msg": "标题已经存在"}
         #执行数据库存取：
         #存文章
         p=Posts()
@@ -33,10 +37,7 @@ class WritepublishAPI(Resource):
         p.user=user
 
         # 执行保存文章的方法
-        try:
-            db.session.add(p)
-        except:
-            return {'code': 503, "msg": "标题已经存在"}
+        db.session.add(p)
 
         try:
             # 如果图片不为空，则执行存储操作

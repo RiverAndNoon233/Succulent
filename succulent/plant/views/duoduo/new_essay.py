@@ -4,12 +4,13 @@ from flask import  request
 from plant.extensions import api, Resource, db, moment
 from plant.models import User, Posts, Image
 
-class Get_visited_nums_API(Resource):
+#首页最新文章展示
+class Home_new_essay_API(Resource):
     def post(self):
         # 得到文章的页码数
         page = request.json.get('page')
-        # 分页查询文章,按照浏览量排序
-        posts = Posts.query.order_by(db.desc(Posts.count))
+        #分页查询文章，并按照时间进行降序排序
+        posts=Posts.query.order_by(db.desc(Posts.timestamp))
 
         #判断文章输入的页数是否在正确的范围内，不在则返回404
         try:
@@ -50,4 +51,4 @@ class Get_visited_nums_API(Resource):
 
         return {'code': 200, 'msg': '获取成功', 'data': data}
 
-api.add_resource(Get_visited_nums_API, '/api/v1/index/hotartical')
+api.add_resource(Home_new_essay_API, '/api/v1/index/newartical')
