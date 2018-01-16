@@ -10,388 +10,432 @@
     <collation id="4" parent="1" name="NOCASE"/>
     <collation id="5" parent="1" name="RTRIM"/>
     <table id="6" parent="2" name="alembic_version"/>
-    <table id="7" parent="2" name="favorite"/>
-    <table id="8" parent="2" name="goods"/>
-    <table id="9" parent="2" name="goods_img"/>
-    <table id="10" parent="2" name="image"/>
-    <table id="11" parent="2" name="news"/>
-    <table id="12" parent="2" name="news_comment"/>
-    <table id="13" parent="2" name="news_image"/>
-    <table id="14" parent="2" name="posts"/>
-    <table id="15" parent="2" name="shopping"/>
-    <table id="16" parent="2" name="shoppingcar"/>
-    <table id="17" parent="2" name="sqlite_master">
+    <table id="7" parent="2" name="beau_image"/>
+    <table id="8" parent="2" name="beauti_essay"/>
+    <table id="9" parent="2" name="favorite"/>
+    <table id="10" parent="2" name="goods"/>
+    <table id="11" parent="2" name="goods_img"/>
+    <table id="12" parent="2" name="image"/>
+    <table id="13" parent="2" name="news"/>
+    <table id="14" parent="2" name="news_comment"/>
+    <table id="15" parent="2" name="news_image"/>
+    <table id="16" parent="2" name="posts"/>
+    <table id="17" parent="2" name="shopping"/>
+    <table id="18" parent="2" name="shoppingcar"/>
+    <table id="19" parent="2" name="sqlite_master">
       <System>1</System>
     </table>
-    <table id="18" parent="2" name="users"/>
-    <column id="19" parent="6" name="version_num">
+    <table id="20" parent="2" name="users"/>
+    <column id="21" parent="6" name="version_num">
       <DataType>VARCHAR(32)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="20" parent="6" name="sqlite_autoindex_alembic_version_1">
+    <index id="22" parent="6" name="sqlite_autoindex_alembic_version_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>version_num</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="21" parent="6" name="alembic_version_pkc">
+    <key id="23" parent="6" name="alembic_version_pkc">
       <ColNames>version_num</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_alembic_version_1</UnderlyingIndexName>
     </key>
-    <column id="22" parent="7" name="user_id">
-      <DataType>INTEGER|0</DataType>
-    </column>
-    <column id="23" parent="7" name="posts_id">
-      <Position>1</Position>
-      <DataType>INTEGER|0</DataType>
-    </column>
-    <foreign-key id="24" parent="7">
-      <ColNames>user_id</ColNames>
-      <RefTableName>users</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="25" parent="7">
-      <ColNames>posts_id</ColNames>
-      <RefTableName>posts</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="26" parent="8" name="id">
+    <column id="24" parent="7" name="id">
       <DataType>INTEGER|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="27" parent="8" name="good_name">
+    <column id="25" parent="7" name="url">
       <Position>1</Position>
-      <DataType>VARCHAR(128)|0</DataType>
-    </column>
-    <column id="28" parent="8" name="price">
-      <Position>2</Position>
-      <DataType>FLOAT|0</DataType>
-    </column>
-    <column id="29" parent="8" name="introduction">
-      <Position>3</Position>
       <DataType>TEXT|0</DataType>
     </column>
-    <column id="30" parent="8" name="category">
-      <Position>4</Position>
-      <DataType>VARCHAR|0</DataType>
+    <column id="26" parent="7" name="beau_photo">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
     </column>
-    <column id="31" parent="8" name="count">
-      <Position>5</Position>
+    <key id="27" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="28" parent="7">
+      <ColNames>beau_photo</ColNames>
+      <RefTableName>beauti_essay</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="29" parent="8" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="8" name="intro">
+      <Position>1</Position>
+      <DataType>VARCHAR(1000)|0</DataType>
+    </column>
+    <column id="31" parent="8" name="uid">
+      <Position>2</Position>
       <DataType>INTEGER|0</DataType>
     </column>
     <key id="32" parent="8">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="33" parent="9" name="id">
+    <foreign-key id="33" parent="8">
+      <ColNames>uid</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="34" parent="9" name="user_id">
       <DataType>INTEGER|0</DataType>
-      <NotNull>1</NotNull>
     </column>
-    <column id="34" parent="9" name="img">
+    <column id="35" parent="9" name="posts_id">
       <Position>1</Position>
-      <DataType>VARCHAR(256)|0</DataType>
-    </column>
-    <column id="35" parent="9" name="goods">
-      <Position>2</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <key id="36" parent="9">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
+    <foreign-key id="36" parent="9">
+      <ColNames>user_id</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
     <foreign-key id="37" parent="9">
-      <ColNames>goods</ColNames>
-      <RefTableName>goods</RefTableName>
+      <ColNames>posts_id</ColNames>
+      <RefTableName>posts</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <column id="38" parent="10" name="id">
       <DataType>INTEGER|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="39" parent="10" name="url">
+    <column id="39" parent="10" name="good_name">
       <Position>1</Position>
-      <DataType>VARCHAR(1000)|0</DataType>
+      <DataType>VARCHAR(128)|0</DataType>
     </column>
-    <column id="40" parent="10" name="posts_id">
+    <column id="40" parent="10" name="price">
       <Position>2</Position>
+      <DataType>FLOAT|0</DataType>
+    </column>
+    <column id="41" parent="10" name="introduction">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="42" parent="10" name="category">
+      <Position>4</Position>
+      <DataType>VARCHAR|0</DataType>
+    </column>
+    <column id="43" parent="10" name="count">
+      <Position>5</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <key id="41" parent="10">
+    <key id="44" parent="10">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="42" parent="10">
+    <column id="45" parent="11" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="11" name="img">
+      <Position>1</Position>
+      <DataType>VARCHAR(256)|0</DataType>
+    </column>
+    <column id="47" parent="11" name="goods">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <key id="48" parent="11">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="49" parent="11">
+      <ColNames>goods</ColNames>
+      <RefTableName>goods</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="50" parent="12" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="12" name="url">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="52" parent="12" name="posts_id">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <key id="53" parent="12">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="54" parent="12">
       <ColNames>posts_id</ColNames>
       <RefTableName>posts</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="43" parent="11" name="id">
+    <column id="55" parent="13" name="id">
       <DataType>INTEGER|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="44" parent="11" name="title">
+    <column id="56" parent="13" name="title">
       <Position>1</Position>
       <DataType>VARCHAR(128)|0</DataType>
     </column>
-    <column id="45" parent="11" name="content">
+    <column id="57" parent="13" name="content">
       <Position>2</Position>
       <DataType>TEXT|0</DataType>
     </column>
-    <column id="46" parent="11" name="count">
+    <column id="58" parent="13" name="count">
       <Position>3</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <column id="47" parent="11" name="timestamp">
+    <column id="59" parent="13" name="timestamp">
       <Position>4</Position>
       <DataType>DATETIME|0</DataType>
     </column>
-    <index id="48" parent="11" name="sqlite_autoindex_news_1">
+    <index id="60" parent="13" name="sqlite_autoindex_news_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>title</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="49" parent="11">
+    <key id="61" parent="13">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="50" parent="11">
+    <key id="62" parent="13">
       <ColNames>title</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_news_1</UnderlyingIndexName>
     </key>
-    <column id="51" parent="12" name="id">
+    <column id="63" parent="14" name="id">
       <DataType>INTEGER|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="52" parent="12" name="context">
+    <column id="64" parent="14" name="context">
       <Position>1</Position>
       <DataType>VARCHAR(1024)|0</DataType>
     </column>
-    <column id="53" parent="12" name="timestamp">
+    <column id="65" parent="14" name="timestamp">
       <Position>2</Position>
       <DataType>DATETIME|0</DataType>
     </column>
-    <column id="54" parent="12" name="news_id">
+    <column id="66" parent="14" name="news_id">
       <Position>3</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <column id="55" parent="12" name="user_id">
+    <column id="67" parent="14" name="user_id">
       <Position>4</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <key id="56" parent="12">
+    <key id="68" parent="14">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="57" parent="12">
+    <foreign-key id="69" parent="14">
       <ColNames>news_id</ColNames>
       <RefTableName>news</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="58" parent="12">
+    <foreign-key id="70" parent="14">
       <ColNames>user_id</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="59" parent="13" name="id">
+    <column id="71" parent="15" name="id">
       <DataType>INTEGER|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="60" parent="13" name="img">
+    <column id="72" parent="15" name="img">
       <Position>1</Position>
       <DataType>VARCHAR(256)|0</DataType>
     </column>
-    <column id="61" parent="13" name="news_id">
+    <column id="73" parent="15" name="news_id">
       <Position>2</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <key id="62" parent="13">
+    <key id="74" parent="15">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="63" parent="13">
+    <foreign-key id="75" parent="15">
       <ColNames>news_id</ColNames>
       <RefTableName>news</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="64" parent="14" name="id">
+    <column id="76" parent="16" name="id">
       <DataType>INTEGER|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="65" parent="14" name="rid">
+    <column id="77" parent="16" name="rid">
       <Position>1</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <column id="66" parent="14" name="title">
+    <column id="78" parent="16" name="title">
       <Position>2</Position>
       <DataType>VARCHAR(128)|0</DataType>
     </column>
-    <column id="67" parent="14" name="content">
+    <column id="79" parent="16" name="content">
       <Position>3</Position>
       <DataType>TEXT|0</DataType>
     </column>
-    <column id="68" parent="14" name="category">
+    <column id="80" parent="16" name="category">
       <Position>4</Position>
       <DataType>VARCHAR|0</DataType>
     </column>
-    <column id="69" parent="14" name="count">
+    <column id="81" parent="16" name="count">
       <Position>5</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <column id="70" parent="14" name="praise_num">
+    <column id="82" parent="16" name="praise_num">
       <Position>6</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <column id="71" parent="14" name="timestamp">
+    <column id="83" parent="16" name="timestamp">
       <Position>7</Position>
       <DataType>DATETIME|0</DataType>
     </column>
-    <column id="72" parent="14" name="uid">
+    <column id="84" parent="16" name="uid">
       <Position>8</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <index id="73" parent="14" name="sqlite_autoindex_posts_1">
+    <index id="85" parent="16" name="sqlite_autoindex_posts_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>title</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="74" parent="14" name="ix_posts_rid">
+    <index id="86" parent="16" name="ix_posts_rid">
       <ColNames>rid</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="75" parent="14">
+    <key id="87" parent="16">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="76" parent="14">
+    <key id="88" parent="16">
       <ColNames>title</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_posts_1</UnderlyingIndexName>
     </key>
-    <foreign-key id="77" parent="14">
+    <foreign-key id="89" parent="16">
       <ColNames>uid</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="78" parent="15" name="user_id">
+    <column id="90" parent="17" name="user_id">
       <DataType>INTEGER|0</DataType>
     </column>
-    <column id="79" parent="15" name="Shoppingcar_id">
+    <column id="91" parent="17" name="Shoppingcar_id">
       <Position>1</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <foreign-key id="80" parent="15">
+    <foreign-key id="92" parent="17">
       <ColNames>user_id</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="81" parent="15">
+    <foreign-key id="93" parent="17">
       <ColNames>Shoppingcar_id</ColNames>
       <RefTableName>shoppingcar</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="82" parent="16" name="id">
+    <column id="94" parent="18" name="id">
       <DataType>INTEGER|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="83" parent="16" name="gid">
+    <column id="95" parent="18" name="gid">
       <Position>1</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <column id="84" parent="16" name="num">
+    <column id="96" parent="18" name="num">
       <Position>2</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <column id="85" parent="16" name="uid">
+    <column id="97" parent="18" name="uid">
       <Position>3</Position>
       <DataType>INTEGER|0</DataType>
     </column>
-    <key id="86" parent="16">
+    <key id="98" parent="18">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="87" parent="16">
+    <foreign-key id="99" parent="18">
       <ColNames>uid</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="88" parent="17" name="type">
+    <column id="100" parent="19" name="type">
       <DataType>text|0</DataType>
     </column>
-    <column id="89" parent="17" name="name">
+    <column id="101" parent="19" name="name">
       <Position>1</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="90" parent="17" name="tbl_name">
+    <column id="102" parent="19" name="tbl_name">
       <Position>2</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="91" parent="17" name="rootpage">
+    <column id="103" parent="19" name="rootpage">
       <Position>3</Position>
       <DataType>integer|0</DataType>
     </column>
-    <column id="92" parent="17" name="sql">
+    <column id="104" parent="19" name="sql">
       <Position>4</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="93" parent="18" name="id">
+    <column id="105" parent="20" name="id">
       <DataType>INTEGER|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="94" parent="18" name="account">
+    <column id="106" parent="20" name="account">
       <Position>1</Position>
       <DataType>VARCHAR(120)|0</DataType>
     </column>
-    <column id="95" parent="18" name="nickname">
+    <column id="107" parent="20" name="nickname">
       <Position>2</Position>
       <DataType>VARCHAR(120)|0</DataType>
     </column>
-    <column id="96" parent="18" name="passwd_hash">
+    <column id="108" parent="20" name="passwd_hash">
       <Position>3</Position>
       <DataType>VARCHAR(128)|0</DataType>
     </column>
-    <column id="97" parent="18" name="email">
+    <column id="109" parent="20" name="email">
       <Position>4</Position>
       <DataType>VARCHAR(128)|0</DataType>
     </column>
-    <column id="98" parent="18" name="confirmed">
+    <column id="110" parent="20" name="confirmed">
       <Position>5</Position>
       <DataType>BOOLEAN|0</DataType>
     </column>
-    <column id="99" parent="18" name="image">
+    <column id="111" parent="20" name="image">
       <Position>6</Position>
       <DataType>VARCHAR(200)|0</DataType>
     </column>
-    <column id="100" parent="18" name="duocoin">
+    <column id="112" parent="20" name="duocoin">
       <Position>7</Position>
       <DataType>VARCHAR(128)|0</DataType>
     </column>
-    <index id="101" parent="18" name="sqlite_autoindex_users_1">
+    <index id="113" parent="20" name="sqlite_autoindex_users_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>account</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="102" parent="18" name="sqlite_autoindex_users_2">
+    <index id="114" parent="20" name="sqlite_autoindex_users_2">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="103" parent="18">
+    <key id="115" parent="20">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="104" parent="18">
+    <key id="116" parent="20">
       <ColNames>account</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_users_1</UnderlyingIndexName>
     </key>
-    <key id="105" parent="18">
+    <key id="117" parent="20">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_users_2</UnderlyingIndexName>
     </key>
-    <check id="106" parent="18">
+    <check id="118" parent="20">
       <Predicate>confirmed IN (0, 1)</Predicate>
     </check>
   </database-model>

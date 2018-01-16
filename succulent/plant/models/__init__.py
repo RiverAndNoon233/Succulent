@@ -1,9 +1,11 @@
 from plant.extensions import db
+from plant.models.beau_photo import Beauti_essay, Beau_image
 from .users import User
 from .posts import Posts
 from .news import News
 from .goods import Goods
 from .images import Image
+
 
 # 创建多对多的中间关联表,ORM自动维护
 favorite = db.Table('favorite',

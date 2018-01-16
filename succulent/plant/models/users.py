@@ -27,6 +27,9 @@ class User(UserMixin,db.Model):
     # 一对多的关系
     posts = db.relationship('Posts', backref='user', lazy='dynamic')
 
+    #用户发的晒美图
+    beauti_photo=db.relationship('Beauti_essay', backref='user', lazy='dynamic')
+
     # 收藏的帖子
     favorite = db.relationship('Posts', secondary='favorite', backref=db.backref('users', lazy='dynamic'), lazy='dynamic')
 
