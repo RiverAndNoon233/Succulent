@@ -10,6 +10,9 @@ class Beauti_essay(db.Model):
     # 添加关联外键，‘表名.字段’
     uid = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+    #晒美图的点赞数量
+    praise_num=db.Column(db.Integer,default=0)
+
     # 关联晒美图的图片一对多关系
     image = db.relationship('Beau_image', backref='beau_essay', lazy='dynamic')
 
