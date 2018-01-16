@@ -13,6 +13,9 @@ class Beauti_essay(db.Model):
     #晒美图的点赞数量
     praise_num=db.Column(db.Integer,default=0)
 
+    #关联晒美图的评论
+    comment=db.relationship('Beau_comment',backref='beau_essay', lazy='dynamic')
+
     # 关联晒美图的图片一对多关系
     image = db.relationship('Beau_image', backref='beau_essay', lazy='dynamic')
 
@@ -23,6 +26,13 @@ class Beau_image(db.Model):
 
     url=db.Column(db.Text)
 
-    #关联晒美图一对多外键
+    #关联晒美图一对多外键,beau_photo实际上指的是Beauti_essay这个表.
     beau_photo = db.Column(db.Integer, db.ForeignKey('beauti_essay.id'))
 
+class Beau_comment(db.Model):
+    __tablename__='beau_comment'
+    id=db.Column(db.Integer, primary_key=True)
+    comment=db.Column(db.Text)
+
+    #关联晒美图一对多外键
+    beau_esssay = db.Column(db.Integer, db.ForeignKey('beauti_essay.id'))
