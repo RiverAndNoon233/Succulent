@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from plant.extensions import db
 
 
@@ -6,6 +8,9 @@ class Beauti_essay(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     #简介
     intro=db.Column(db.String(1000))
+
+    #晒美图的时间
+    time=db.Column(db.DateTime,default=datetime.utcnow)
 
     # 添加关联外键，‘表名.字段’
     uid = db.Column(db.Integer, db.ForeignKey('users.id'))

@@ -1,3 +1,4 @@
+from plant.views.duoduo.beau_es import Beau_be
 from plant.views.duoduo.com_be import Com_be
 from plant.views.duoduo.get_vistitesd_num import Get_visited_nums_API
 from plant.views.duoduo.new_essay import Home_new_essay_API
@@ -11,3 +12,4 @@ Search_essay_API()
 Write_beauti_img()
 Prai_beau_essay()
 Com_be()
+Beau_be()
