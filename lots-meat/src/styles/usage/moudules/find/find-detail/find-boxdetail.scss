@@ -21,6 +21,35 @@
         .find-top{
             width:100%;
             height:0.96rem;
+            @include flexbox();
+            padding:10px 0 10px 20px;
+            img{
+                width:0.75rem;
+                height:0.75rem;
+            }
+            .findtop-right{
+                margin-left:10px;
+                font-weight: 500;
+                h4{
+                   color:#333;
+                   font-size:15px; 
+                   font-weight: 500;
+                   padding-top:10px;
+                }
+                h5{
+                    color:#9a9a9a;
+                    font-size:12px; 
+                    font-weight: 500;
+                    i{
+                        margin-left:0.05rem;
+                    }
+                }
+                h6{
+                    color:#9a9a9a;
+                    font-size:12px; 
+                    font-weight: 500;
+                }
+            }
         }
         .find-Item{
             

@@ -5,7 +5,16 @@
       </div>
       <div class="find-detailbox">
         <div class="find-top">
-             {{detail_type}}
+             <!-- {{detail_type}} -->
+             <img src="/static/images/find3.jpg"/>
+             <div class="findtop-right">
+                <h4>{{detail_type}}</h4>
+                <h5>
+                    <span>主题：44760</span>
+                    <i>今日：56</i>
+                </h5>
+                <h6>景天科植物讨论</h6>
+             </div>
 
         </div>
         <div class="find-Item">

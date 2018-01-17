@@ -1,6 +1,6 @@
 <template>
     <div class="find-detailhead">
-        <router-link :to="'/find-fo'"  tag="span" class="fa fa-chevron-left"> </router-link>
+        <router-link :to="'/find-fo'"  tag="span" class="yo-ico">&#xe605;</router-link>
         <div class="find-detailhead"><span>{{detail_type}}</span></div>
     </div>
 </template>

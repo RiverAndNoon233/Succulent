@@ -12,6 +12,8 @@ import newPersonKnow from "@/components/lots/modules/mustKnow-vue/newPerson-know
 import newShopKnow from "@/components/lots/modules/mustKnow-vue/newShop-know"
 import newPlantKnow from "@/components/lots/modules/mustKnow-vue/newPlant-know"
 import newDayKnow from "@/components/lots/modules/mustKnow-vue/newDay-know"
+import newPlantDetail from "@/components/lots/modules/mustKnow-vue/newPlantDetail"
+
 
 import lotBoxDetail from "@/components/lots/modules/lots-vue/lots-boxDetail"
 
@@ -38,6 +40,8 @@ import MyWallet from "@/components/lots/mine/set/MyWallet"
 //发现里面的二级路由
 import FindBoxDetail from "@/components/lots/find/Find-boxdetail"
 import FindWritePublish from "@/components/lots/find/find-writepublish"
+import FindSearch from "@/components/lots/find/find-search"
+
 
 Vue.use(Router)
 
@@ -49,6 +53,7 @@ const routes = [
     {path:"/find-fo",name:'find-fo',component:Find,children:[
       {path:"FindBoxDetail",name:"FindBoxDetail",component:FindBoxDetail},
       {path:"FindWritePublish",name:"FindWritePublish",component:FindWritePublish},
+      {path:"FindSearch",name:"FindSearch",component:FindSearch}
     ]},
     {path:"/shop-fo",name:'shop-fo',component:Shop},
     {path:"/mine-fo",name:'',component:Mine,children:[
@@ -85,7 +90,9 @@ const routes = [
       {path: 'news',name: 'news',component:news},
       {path: 'newPersonKnow',name: 'newPersonKnow',component:newPersonKnow},
       {path: 'newShopKnow',name: 'newShopKnow',component:newShopKnow},
-      {path: 'newPlantKnow',name: 'newPlantKnow',component:newPlantKnow},
+      {path: 'newPlantKnow',name: 'newPlantKnow',component:newPlantKnow,children:[
+           {path: 'newPlantDetail',name: 'newPlantDetail',component:newPlantDetail}
+      ]},
       {path: 'newDayKnow',name: 'newDayKnow',component:newDayKnow},
       {path: 'lotBoxDetail',name: 'lotBoxDetail',component:lotBoxDetail}
     ]

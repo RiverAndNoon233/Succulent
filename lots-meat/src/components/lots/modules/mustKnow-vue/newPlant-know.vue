@@ -1,32 +1,33 @@
 <template>
     <div class="newPlant-know">
+         <router-view></router-view> 
        <new-head></new-head> 
        <div class="classify">
-           <img src=""/>
+           <img src="/static/images/plant1.jpg"/>
            <div class="classify-zhe">
                <p>养护知识</p>
-               <a href="">点击查看</a>
+               <a @click="turntype(1)">点击查看</a>
            </div>
        </div>
        <div class="classify">
-           <img src=""/>
+           <img src="/static/images/plant2.jpg"/>
            <div class="classify-zhe">
-               <p>养护知识</p>
-               <a href="">点击查看</a>
+               <p>播种叶插繁殖</p>
+               <a @click="turntype(2)">点击查看</a>
            </div>
        </div>
        <div class="classify">
-           <img src=""/>
+           <img src="/static/images/plant3.jpg"/>
            <div class="classify-zhe">
-               <p>养护知识</p>
-               <a href="">点击查看</a>
+               <p>修根移栽上盆</p>
+               <a @click="turntype(3)">点击查看</a>
            </div>
        </div>
        <div class="classify">
-           <img src=""/>
+           <img src="/static/images/plant4.jpg"/>
            <div class="classify-zhe">
-               <p>养护知识</p>
-               <a href="">点击查看</a>
+               <p>病虫害防治</p>
+               <a @click="turntype(4)">点击查看</a>
            </div>
        </div>
     </div>
@@ -38,6 +39,11 @@
         name:"newPlant-know",
         components:{
            NewHead
+        },
+        methods:{
+            turntype(plantnum){
+                this.$router.push({path:'/lotindex/newPlantKnow/newPlantDetail',query:{"class":plantnum}});
+            }
         }
     }        
 </script>
@@ -53,17 +59,19 @@
         .classify{
             width:100%;
             height:144px;
-            margin-top:0.05rem;
-            background:red;
+            margin-top:0.09rem;
             position: relative;
+            img{
+                width:100%;
+                height:100%;
+            }
             .classify-zhe{
                 width:150px;
                 height: 100%;
                 position: absolute;
                 top:0;
                 right:0;
-                background:#333;
-                transform: 0.5;
+                background-color:rgba(0,0,0,0.3);
                 text-align: center;
                 p{
                     color:#fff;
