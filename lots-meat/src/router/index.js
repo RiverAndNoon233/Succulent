@@ -20,6 +20,7 @@ import lotTwo from '@/components/lots/lotTwo'
 import Find from "@/components/lots/find/find"
 import Shop from "@/components/lots/shop/shop"
 import Mine from "@/components/lots/mine/Mine"
+import ShopDetails from "@/components/lots/shop/shopdetails/ShopDetails.vue"
 
 //未登陆和注册时路由
 import MineLogin from "@/components/lots/mine/MineLogin"
@@ -88,7 +89,8 @@ const routes = [
       {path: 'newDayKnow',name: 'newDayKnow',component:newDayKnow},
       {path: 'lotBoxDetail',name: 'lotBoxDetail',component:lotBoxDetail}
     ]
-    },    
+    },
+    {path:"/shopdetails:_id",name:"shopdetails",component:ShopDetails},
     {path:'/**',redirect:'/lotindex'}
   ]
 //去掉路由前面#号
@@ -106,7 +108,7 @@ router.beforeEach(function(to,from,next){
   
 	switch(name){
 		case 'newPersonKnow':title='新人须知';break;
-		case 'newShopKnow':title='交易须知';break;
+		case 'newShopKnow':title='肉多多交易购买';break;
     case 'newPlantKnow':title='种植知识';break;
     case 'newDayKnow':title='每日签到';break;
 		default :title = '多多';break;

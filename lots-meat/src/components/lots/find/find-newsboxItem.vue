@@ -1,5 +1,5 @@
 <template>
-        <li @click="detail">
+        <li class="find-detail-li" @click="detail">
             <div class="newsbox-top">
                 <img src="/static/images/find5.jpg">
                 <p class="newsbox-p">

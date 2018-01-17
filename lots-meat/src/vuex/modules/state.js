@@ -3,6 +3,9 @@ const state = {
     LoginOnData:'',
     title_know:'多多',
     find_type:"",
-    detail_type:''
+    detail_type:'',
+    car:localStorage.car?JSON.parse(localStorage.car):[],
+    gid:'',
+    carprice:''
 }
 export default state

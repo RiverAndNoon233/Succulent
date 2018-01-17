@@ -7,8 +7,8 @@
         <div class="collect-con">
             <ul>
                 <li v-for="(data,i) in datas" :key="i">
-                    <div><h3>[交流]{{data.data.headline}}</h3><p><span>{{data.data.time}}</span><span>{{data.data.username}}</span><span>{{data.data.reader}}阅读</span></p></div>
-                    <div><img :src="data.data.imurl"/></div>
+                    <div><h3>[交流]{{data.headline}}</h3><p><span>{{data.time}}</span><span>{{data.username}}</span><span>{{data.reader}}阅读</span></p></div>
+                    <div><img :src="data.imurl"/></div>
                 </li>
             </ul>
         </div>
@@ -33,9 +33,9 @@
         created(){
             let that=this
             axios.get("/static/api/collect.json",{user_id:that.user_id}).then((res)=>{
-                console.log(res)
-                that.datas=res.data
-                console.log(that.datas[1].data)
+                console.log(res.data.data)
+                that.datas=res.data.data
+                console.log(that.datas.headline)
             })
             that.user_data = localStorage.getItem("user_info")
             that.user_data = JSON.parse(that.user_data)
@@ -49,6 +49,7 @@
         .collect-con{
             flex:1;
             overflow-y:auto;
+            padding-bottom:.34rem;
             ul{
                 li{
                     width:100%;

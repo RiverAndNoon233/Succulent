@@ -1,4 +1,12 @@
+@import "./find-detailItem.scss";
 .find-boxdetail{
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index:1000;
+    background:#fff;
+     @include flexbox();
+     @include flex-direction(column);
     .find-detailhead{
         width:100%;
         height:44px;
@@ -8,4 +16,15 @@
         @include justify-content(center); 
         @include align-items(center);
     }
+    .find-detailbox{
+        overflow-y: scroll;
+        .find-top{
+            width:100%;
+            height:0.96rem;
+        }
+        .find-Item{
+            
+        }
+    }
+    
 }
