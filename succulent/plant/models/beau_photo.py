@@ -36,3 +36,6 @@ class Beau_comment(db.Model):
 
     #关联晒美图一对多外键
     beau_esssay = db.Column(db.Integer, db.ForeignKey('beauti_essay.id'))
+
+    #关联用户外键
+    u=db.Column(db.Integer,db.ForeignKey('users.id'))
