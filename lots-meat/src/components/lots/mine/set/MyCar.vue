@@ -17,7 +17,7 @@
             <div></div>
             <div>
                 <span>总计:<b>￥{{prices}}</b></span>
-                <button>去结算</button>
+                <button @click="toorder">去结算</button>
             </div>
         </div>
     </div>
@@ -38,6 +38,9 @@ export default{
     methods:{
         tologinon(){
             this.$router.replace({name:'mineloginon'})  
+        },
+        toorder(){
+            this.$router.replace({name:'suborder'})  
         },
         checked(){
             this.ischeck = !this.ischeck

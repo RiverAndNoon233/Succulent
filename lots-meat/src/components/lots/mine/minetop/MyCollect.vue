@@ -2,12 +2,12 @@
 <!-- -->
     <div class="my-collect style-box">
         <div class="head">
-            <i class="fa fa-chevron-left" @click="tologinon"></i><span>收藏</span>       
+            <i class="yo-ico" @click="tologinon">&#xe605;</i><span>收藏</span>       
         </div>
         <div class="collect-con">
             <ul>
                 <li v-for="(data,i) in datas" :key="i">
-                    <div><h3>[交流]{{data.headline}}</h3><p><span>{{data.time}}</span><span>{{data.username}}</span><span>{{data.reader}}阅读</span></p></div>
+                    <div><h3>{{data.headline}}</h3><p><span>{{data.time}}</span><span>{{data.username}}</span><span><i class="yo-ico">&#xe639;</i>{{data.reader}}</span></p></div>
                     <div><img :src="data.imurl"/></div>
                 </li>
             </ul>
@@ -53,27 +53,32 @@
             ul{
                 li{
                     width:100%;
-                    height:.8rem;
+                    height:1.05rem;
                     display:flex;
                     justify-content:space-between;
                     padding:.1rem .2rem;
+                    border-bottom:.01rem solid #d8d8d8;
                     div:nth-of-type(1){
                         width:2rem;
                         line-height:.3rem;
+                        display:flex;
+                        flex-direction:column;
+                        justify-content:space-between;
                         h3{
                             overflow: hidden;
                             text-overflow:ellipsis;
                             white-space: nowrap;
                         }
                         p{
+                            width:1.8rem;
                             display:flex;
                             justify-content:space-between;
                         }
                     }
                     div:nth-of-type(2){
                         img{
-                            width:.9rem;
-                            height:.6rem;
+                            width:.85rem;
+                            height:.85rem;
                         }
                     }
                 }

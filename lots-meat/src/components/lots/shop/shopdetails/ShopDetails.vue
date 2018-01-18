@@ -1,16 +1,21 @@
 <template>
-    <div class="shopdetails style-box">
-        <div class="head">
-            <i class="yo-ico" @click="toshop">&#xe605;</i><span>商品详情</span>       
-        </div>
+    <div class="shopdetails">
         <div class="details-con">
-            <mt-swipe class="box" :auto="3000">
-                <mt-swipe-item v-for="(img,i) in imgUrl" :key="i"><img :src="img"></mt-swipe-item>
-            </mt-swipe>
+            <div class="lunbo">
+                <mt-swipe class="box" :auto="3000">
+                    <mt-swipe-item v-for="(img,i) in imgUrl" :key="i"><img :src="img"></mt-swipe-item>
+                    
+                </mt-swipe>
+                <div class="rou"><i class="yo-ico" @click="toshop">&#xe605;</i></div>
+            </div>
             <div class="content">
-                <h1>{{datas.goods_name}}</h1>
-                <p>￥{{datas.price}}</p>
-                <p><span>快递:免运费</span><span><b>月销：700笔</b>上海</span></p>
+                <div class="con-top">
+                    <h1>{{datas.goods_name}}</h1>
+
+                    <p><i>￥</i>{{datas.price}}</p>
+                    <p>原价:￥{{datas.price+10}}</p>
+                    <p><span>快递:免运费</span><b>月销：700笔</b><span>上海</span></p>
+                </div>
                 <div class="intro">
                     <h2>宝贝简介</h2>
                     <p>{{datas.introduction}}</p>
@@ -84,37 +89,84 @@ import {Toast} from 'mint-ui'
          width:100%;
          height:100%;
          position:absolute;
+         background:#fff;
+         overflow-y:auto;
+         padding-bottom:.5rem;
          .details-con{
-             overflow-y:auto;
-            .box{ 
-                width:100%;
-                height:2.3rem;
-                img{
+            .lunbo{
+                position:relative;
+                .box{ 
                     width:100%;
-                    height:2.3rem;
+                    height:3.67rem;
+                    img{
+                        width:100%;
+                        height:3.67rem;
+                    }
+                }
+                .rou{
+                    position:absolute;
+                    top:.1rem;
+                    left:.1rem;
+                    i{
+                        display:inline-block;
+                        width:.3rem;
+                        height:.3rem;
+                        border-radius:.15rem;
+                        border:.02rem solid #fff;
+                        text-align:center;
+                        line-height:.25rem;
+                        color:#fff;
+                    }
                 }
             }
+            
             .content{
-                padding:.1rem .15rem;
-                h1{
-                    font-size:.2rem;
-                }
-                p:nth-of-type(2){
-                    display:flex;
-                    justify-content:space-between;
+                .con-top{
+                    padding:.1rem .15rem;
+                    border-bottom:.1rem solid #d8d8d8;
+                    h1{
+                        font-size:.16rem;
+                        padding-bottom:.26rem;
+                    }
+                    p{
+                        color:#999999;
+                    }
+                    p:nth-of-type(1){
+                        font-size:.13rem;
+                        color:red;
+                        font-weight:1000;
+                        i{
+                            font-size:.06rem;
+                        }
+                    }
+                    p:nth-of-type(2){
+                        text-decoration:line-through;
+                        line-height:.3rem;
+                    }
+                    p:nth-of-type(3){
+                        display:flex;
+                        justify-content:space-between;
+                        b{
+                            font-weight:normal;
+                        }
+                    }
                 }
                 .intro{
                     min-height:.5rem;
-                    padding:.1rem;
-                    background:#04b10a;
-                    color:#fff;
-                    border-radius:.1rem;
+                    padding:.1rem .2rem;
+                    color:#999999;
+                    h2{
+                        color:#666666;
+                    }
+                    p{
+                        padding:.1rem .05rem 0 .25rem;
+                        line-height:.25rem;
+                    }
                 }
             }
             .but-bottom{
                 display:flex;
                 justify-content:space-between;
-                padding:0 .15rem;
                 position:fixed;
                 bottom:0;
                 width:100%;
@@ -125,9 +177,22 @@ import {Toast} from 'mint-ui'
                         width:100%;
                         height:100%;
                         border:none;
+                        background:#fff;
+                        color:#04b10a;
+                        font-size:.15rem;
+                        font-weight:bold;
+                    }
+                }
+                li:nth-of-type(2){
+                    button{
                         background:#04b10a;
                         color:#fff;
-                        border-radius:.1rem;
+                    }
+                }
+                li{
+                    button:active{
+                        color:#fff;
+                        background:#04b10a;
                     }
                 }
             }
