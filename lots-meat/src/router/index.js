@@ -16,6 +16,7 @@ import newPlantDetail from "@/components/lots/modules/mustKnow-vue/newPlantDetai
 
 
 import lotBoxDetail from "@/components/lots/modules/lots-vue/lots-boxDetail"
+import lotPingjia from "@/components/lots/modules/lots-vue/lots-pingjia"
 
 //以下四个分别是 多多 商城 我的 。。
 import lotTwo from '@/components/lots/lotTwo'
@@ -94,7 +95,9 @@ const routes = [
            {path: 'newPlantDetail',name: 'newPlantDetail',component:newPlantDetail}
       ]},
       {path: 'newDayKnow',name: 'newDayKnow',component:newDayKnow},
-      {path: 'lotBoxDetail',name: 'lotBoxDetail',component:lotBoxDetail}
+      {path: 'lotBoxDetail',name: 'lotBoxDetail',component:lotBoxDetail,children:[
+           {path: 'lotPingjia',name: 'lotPingjia',component:lotPingjia}
+      ]},
     ]
     },
     {path:"/shopdetails:_id",name:"shopdetails",component:ShopDetails},
@@ -117,7 +120,7 @@ router.beforeEach(function(to,from,next){
 		case 'newPersonKnow':title='新人须知';break;
 		case 'newShopKnow':title='肉多多交易购买';break;
     case 'newPlantKnow':title='种植知识';break;
-    case 'newDayKnow':title='每日签到';break;
+    case 'newDayKnow':title='多多小助手';break;
 		default :title = '多多';break;
   }
   switch(num){

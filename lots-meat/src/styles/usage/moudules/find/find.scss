@@ -1,6 +1,7 @@
 @import "./find-detail/find-detailItem.scss";
 @import "./find-detail/find-boxdetail.scss";
 @import "./find-detail/find-writepublish.scss";
+@import "./find-detail/find-search.scss";
 .find-to{
     @include flexbox();
     @include flex-direction(column);

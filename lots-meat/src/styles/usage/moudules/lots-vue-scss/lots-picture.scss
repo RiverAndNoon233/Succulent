@@ -1,0 +1,40 @@
+.picture-router-items{
+    @include flexbox();
+    @include flex-direction(column);
+     width:100%;
+     height:100%;
+     background:#fff;
+    .picture{
+         @include flexbox();
+        .picture-left{
+            margin-left:0.33rem;
+            
+            img{
+                width:0.44rem;
+            height:0.44rem;
+            }
+        }
+        .picture-right{
+            margin-left:0.1rem;
+            h1{}
+            h2{}
+            h3{}
+            h4{}
+            ul{
+                @include flexbox();
+                @include flex-wrap(wrap);
+                li{
+                    width:0.9rem;
+                    height:0.9rem;
+                    padding:0.02rem;
+                    img{
+                        width:100%;
+                        height:100%;
+                    }
+                }
+            }
+        }
+    }
+    
+        
+}

@@ -1,5 +1,6 @@
 <template>
     <div class="lots-boxdetail">
+         <router-view></router-view>
         <div class="head-height">
             <lots-box-detail-head></lots-box-detail-head>
        </div>
