@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8a165b4120ac
+Revision ID: 8516e093e009
 Revises: 
-Create Date: 2018-01-16 17:47:08.878383
+Create Date: 2018-01-17 21:12:14.285578
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8a165b4120ac'
+revision = '8516e093e009'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -48,6 +48,14 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('account'),
     sa.UniqueConstraint('email')
+    )
+    op.create_table('beauti_essay',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('intro', sa.String(length=1000), nullable=True),
+    sa.Column('uid', sa.Integer(), nullable=True),
+    sa.Column('praise_num', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['uid'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('goods_img',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -96,6 +104,28 @@ def upgrade():
     sa.ForeignKeyConstraint(['uid'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('be_user',
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('be_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['be_id'], ['beauti_essay.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], )
+    )
+    op.create_table('beau_comment',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('comment', sa.Text(), nullable=True),
+    sa.Column('beau_esssay', sa.Integer(), nullable=True),
+    sa.Column('u', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['beau_esssay'], ['beauti_essay.id'], ),
+    sa.ForeignKeyConstraint(['u'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('beau_image',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('url', sa.Text(), nullable=True),
+    sa.Column('beau_photo', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['beau_photo'], ['beauti_essay.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('favorite',
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('posts_id', sa.Integer(), nullable=True),
@@ -123,12 +153,16 @@ def downgrade():
     op.drop_table('shopping')
     op.drop_table('image')
     op.drop_table('favorite')
+    op.drop_table('beau_image')
+    op.drop_table('beau_comment')
+    op.drop_table('be_user')
     op.drop_table('shoppingcar')
     op.drop_index(op.f('ix_posts_rid'), table_name='posts')
     op.drop_table('posts')
     op.drop_table('news_image')
     op.drop_table('news_comment')
     op.drop_table('goods_img')
+    op.drop_table('beauti_essay')
     op.drop_table('users')
     op.drop_table('news')
     op.drop_table('goods')
