@@ -11,7 +11,7 @@
                 {{newItem.essay_title}}
             </div>
             <div class="newsbox-image">
-                <img v-for="(ImageUrl,i) in ImageUrls" :key="i" :src="ImageUrl">
+                <img v-for="(ImageUrl,i) in ImageUrls" :key="i" v-preview="ImageUrl" :src="ImageUrl">
             </div>
             <div class="newsbox-foot">
                 <span>评论</span><span class="fa fa-commenting-o"></span>

@@ -16,6 +16,9 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 
+import vuePicturePreview from 'vue-picture-preview'
+Vue.use(vuePicturePreview)
+
 /* eslint-disable no-new */
 //vuex
 import store from './vuex/store.js'
