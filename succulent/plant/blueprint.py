@@ -5,6 +5,8 @@ from plant.views.mine.login import login
 from plant.views.mine.register import regist
 from plant.views.mine.change import change
 from plant.views.mine.myfavorite import myfavorite
+from plant.views.duoduo.news import index
+
 # <<<<<<< HEAD
 # <<<<<<< HEAD
 # <<<<<<< HEAD
@@ -33,6 +35,7 @@ DEFAULT_BLUEPRINT = (
     (shop, '/shop'),
     (writepublish,'/writepublish'),
     (get_new_essay,'/get_new_essay'),
+    (index, '/index'),
 
 )
 
