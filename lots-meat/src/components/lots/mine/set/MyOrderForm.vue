@@ -2,13 +2,12 @@
     <!--订单组件-->
     <div class="my-order-from style-box">
         <div class="head">
-            <i class="yo-ico">&#xe605;</i><span>买家中心</span>       
+            <i class="yo-ico" @click="tologinon">&#xe605;</i><span>买家中心</span>       
         </div>
         <div class="user">
             <img src="/static/images/10.jpg"/>
             <p>用户名:{{nick}}</p>
         </div>
-        <p class="myorder"><span>我的订单</span></p>
         <ul class="nav-top">
             <li v-for="nav in navs" :key="nav.id"><i class="yo-ico" v-html="nav.icon">{{nav.icon}}</i><span>{{nav.content}}</span></li>
         </ul>
@@ -38,6 +37,11 @@
         },
         mounted(){
             this.nick = JSON.parse(localStorage.user_info).username
+        },
+        methods:{
+            tologinon(){
+                this.$router.replace({name:'mineloginon'})  
+            }
         }
     }    
 </script>
@@ -62,26 +66,23 @@
                 padding-left:.2rem;
             }
         }
-        .myorder{
-            height:.42rem;
-            line-height:.42rem;
-            width:100%;
-            border-bottom:.01rem solid #ccc;
-            span{
-                color:red;
-                border-bottom:.03rem solid red;
-                margin-left:.2rem;
-            }
-        }
         ul:nth-of-type(1){
             display:flex;
-            height:.6rem;
+            height:1rem;
             li{
                 flex:1;
                 text-align:center;
                 i{
                     display:block;
-                    font-size:.26rem;
+                    font-size:.4rem;
+                    color:#04b10a;
+                    padding-top:.05rem;
+                }
+                span{
+                    display:inline-block;
+                    padding-top:.05rem;
+                    font-size:.16rem;
+                    color:#04b10a;
                 }
             }
         }
@@ -94,9 +95,20 @@
                 justify-content:space-between;
                 padding:0 .1rem;
                 line-height:.5rem;
-                i,span:nth-of-type(2){
+                span:nth-of-type(2){
                     display:inline-block;
                     width:.2rem;
+                }
+                i{
+                    font-size:.2rem;
+                    height:.25rem;
+                    width:.25rem;
+                    margin-top:.1rem;
+                    line-height:.26rem;
+                    background:#03ab1a;
+                    border-radius:.03rem;
+                    text-align:center;
+                    color:#fff;
                 }
                 span:nth-of-type(1){
                     flex:1;

@@ -31,6 +31,9 @@ class User(UserMixin, db.Model):
     # 用户发的晒美图
     beauti_photo = db.relationship('Beauti_essay', backref='user', lazy='dynamic')
 
+    #用户关于晒美图的评论
+    be_comment=db.relationship('Beau_comment', backref='user', lazy='dynamic')
+
     # 收藏的帖子
     favorite = db.relationship('Posts', secondary='favorite', backref=db.backref('users', lazy='dynamic'),
                                lazy='dynamic')

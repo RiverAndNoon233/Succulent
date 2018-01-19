@@ -5,7 +5,7 @@
         <i class="yo-ico" @click="tologinon">&#xe605;</i><span>购物车</span>       
         </div>
         <div class="car-none">
-            <div v-if="!datas.length">
+            <div v-if="!car.length">
                 <p>购物车空空哒，快去逛逛吧</p>
                 <button>随便看看></button>
             </div>
@@ -13,11 +13,11 @@
         </div>
         
         
-        <div class="car-bot" v-if="datas.length"> 
+        <div class="car-bot" v-if="car.length"> 
             <div></div>
             <div>
                 <span>总计:<b>￥{{prices}}</b></span>
-                <button>去结算</button>
+                <button @click="toorder">去结算</button>
             </div>
         </div>
     </div>
@@ -30,7 +30,6 @@ export default{
     data(){
         return{
             ischeck:false,
-            //datas:'',
             prices:'',
             car_leng:''
         }
@@ -38,6 +37,9 @@ export default{
     methods:{
         tologinon(){
             this.$router.replace({name:'mineloginon'})  
+        },
+        toorder(){
+            this.$router.replace({name:'suborder'})  
         },
         checked(){
             this.ischeck = !this.ischeck
@@ -52,10 +54,6 @@ export default{
             this.prices = this.$store.state.carprice
         }
     },
-    created(){
-        this.datas = JSON.parse(localStorage.car?localStorage.car:'')
-        this.car_leng = this.car.length
-    },
     components:{
         MyCarList
     },
@@ -69,7 +67,7 @@ export default{
     },
     updated(){
         if(this.prices==0){
-            location=location
+            // location=location
         }
     }
 }    
