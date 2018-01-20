@@ -11,12 +11,10 @@ get_new_essay = Blueprint('get_new_essay', __name__)
 class Get_new_essay_API(Resource):
     #post方法的api
     def post(self):
-        #得到非必须的用户字段，user_id
-        # user_id=request.json.get('user_id')
         #得到文章的页码数
         page=request.json.get('page')
         #分页查询文章
-        posts=Posts.query.order_by(db.desc(Posts.timestamp))
+        posts=Posts.query.order_by(db.desc(Posts.timestamp)).filter_by(rid=0)
 
         try:
             page_posts=posts.paginate(page=page,per_page=10)

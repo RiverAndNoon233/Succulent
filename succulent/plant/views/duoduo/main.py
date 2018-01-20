@@ -7,4 +7,4 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def indexall():
-    return render_template('duoduo/main.html')
+    return render_template('duoduo/index.html')

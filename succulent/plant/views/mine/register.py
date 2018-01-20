@@ -7,7 +7,7 @@ from plant.email import send_mail
 from flask import jsonify
 
 regist = Blueprint('register', __name__)
-@regist.route('/regist/', methods=['POST'])
+@regist.route('/register/', methods=['POST'])
 def register():
     account = request.get_json('account').get('account')
     email = request.get_json('email').get('email')
@@ -39,7 +39,7 @@ def register():
 def activate(token):
     print(222)
     if User.check_activate_token(token):
-        return jsonify({'code': 0, 'msg': '注册成功'})
+        return '<p>注册成功</p>'
     else:
         return jsonify({'code': 1, 'msg': '链接已失效'})
 

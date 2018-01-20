@@ -5,6 +5,8 @@ from plant.views.mine.login import login
 from plant.views.mine.register import regist
 from plant.views.mine.change import change
 from plant.views.mine.myfavorite import myfavorite
+from plant.views.duoduo.news import index
+
 # <<<<<<< HEAD
 # <<<<<<< HEAD
 # <<<<<<< HEAD
@@ -25,14 +27,15 @@ from plant.views.shop.shop import shop
 
 DEFAULT_BLUEPRINT = (
     (main, ''),
-    (login, '/user'),
-    (regist, '/user'),
-    (myposts,'/user'),
-    (myfavorite,'/user'),
-    (change,'/user'),
-    (shop, '/shop'),
-    (writepublish,'/writepublish'),
-    (get_new_essay,'/get_new_essay'),
+    (login, '/api/v1/user'),
+    (regist, '/api/v1/user'),
+    (myposts,'/api/v1/user'),
+    (myfavorite,'/api/v1/user'),
+    (change,'/api/v1/user'),
+    (shop, '/api/v1/shop'),
+    (writepublish,'/api/v1/writepublish'),
+    (get_new_essay,'/api/v1/found/get_new_essay'),
+    (index, '/api/v1/index'),
 
 )
 

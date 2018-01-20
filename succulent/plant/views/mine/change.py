@@ -9,7 +9,7 @@ change = Blueprint('change', __name__)
 
 # 修改密码
 @change.route('/changepd/', methods=['POST'],endpoint='changepd')
-@loginCheck
+# @loginCheck
 def changepd():
     uid = request.get_json(True).get('uid')
     oldpd = request.get_json(True).get('old_password')
@@ -26,7 +26,7 @@ def changepd():
 
 # 修改邮箱
 @change.route('/changeEm/',methods=['POST'],endpoint='changeEm')
-@loginCheck
+# @loginCheck
 def changeEm():
     uid = request.get_json(True).get('uid')
     # oldpd = request.get_json().get('old_email')
@@ -41,7 +41,7 @@ def changeEm():
         # 把需要的信息塞到token里
         token = user.generate_activate_token(uid=user.id, email=newEmail)
         # 发送验证邮件
-        send_mail(newEmail, '账户验证', 'email/change', token=token)
+        send_mail(newEmail, '账户验证', 'email/change_email_activate', token=token)
         return jsonify({'code': 0, 'msg': '发送邮箱验证'})
 
 # 账户的激活
@@ -49,12 +49,12 @@ def changeEm():
 def activate(token):
     print(111)
     if User.change_email_activate_token(token):
-        return jsonify({'code': 0, 'msg': '修改成功'})
+        return "<p>邮箱修改成功</p>"
     else:
         return jsonify({'code': 1, 'msg': '链接已失效'})
 
 # 修改头像
 @change.route('/changeIg/',endpoint='changeIg')
-@loginCheck
+# @loginCheck
 def changeIg():
     pass

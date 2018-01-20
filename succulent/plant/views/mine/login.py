@@ -30,11 +30,11 @@ def logined():
             "uid":user.id,
             # "account": user.account,  # 账号
             # "password": user.password,
-            # "nickname": user.nickname,  # 昵称
+            "nickname": user.nickname,  # 昵称
             # "email": user.email,  # 邮箱
             # "confirmed": user.confirmed,  # 邮箱是否已验证激活
             # "image": user.image,  # 头像
-            # "duocoin":user.duocoin,# 多币
+            "duocoin":user.duocoin,# 多币
             # "posts":user.posts,
             # "favorite":user.favorite,
             # "shopping_car":user.shopping_car,

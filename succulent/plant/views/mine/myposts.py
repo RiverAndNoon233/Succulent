@@ -7,7 +7,7 @@ myposts = Blueprint('myposts', __name__)
 
 
 @myposts.route('/myposts/', methods=['POST'])
-@loginCheck
+# @loginCheck
 def mypost():
     uid = request.get_json('uid').get('uid')
     data = []

@@ -3,7 +3,7 @@ from flask import session,redirect,url_for,jsonify
 # class LoginChecking():
 #     @classmethod
 def loginCheck(func):
-    def check():
+    def check(view_func,):
         if session.get('session_id'):
             print('已经登录')
             return func

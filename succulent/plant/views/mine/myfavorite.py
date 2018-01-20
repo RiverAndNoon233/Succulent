@@ -7,7 +7,7 @@ from flask import jsonify
 myfavorite = Blueprint('myfavorite', __name__)
 
 @myfavorite.route('/myfavorite/', methods=['POST'])
-@loginCheck
+# @loginCheck
 def myfp():
     uid = request.get_json(True).get('uid')
     user = User.query.filter_by(id=uid).first()
