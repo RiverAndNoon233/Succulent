@@ -1,3 +1,5 @@
+#发表晒美图
+
 from flask import request
 
 from plant.extensions import api, Resource, db

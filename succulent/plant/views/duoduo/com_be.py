@@ -1,3 +1,7 @@
+#晒美图的评论的api
+
+
+
 from flask import request
 
 from plant.extensions import api, Resource, db

@@ -1,3 +1,5 @@
+#晒美图的点赞功能
+
 from flask import request
 
 from plant.extensions import api, Resource, db

@@ -1,3 +1,6 @@
+# 返回晒美图详情的api
+
+
 from flask import request
 
 from plant.extensions import api, Resource, db

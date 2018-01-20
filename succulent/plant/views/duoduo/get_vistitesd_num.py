@@ -1,3 +1,5 @@
+#多多首页展示最热文章的api
+
 
 from flask import  request
 
