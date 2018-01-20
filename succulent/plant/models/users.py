@@ -82,19 +82,16 @@ class User(UserMixin, db.Model):
 
     # 找回密码的激活账户方法
     def checkpw_activate_token(token):
+        print(111111)
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
             data = s.loads(token)
         except BadSignature:
-            flash('无效的token')
             return False
         except SignatureExpired:
-            flash('token已失效')
             return False
         user = User.query.filter_by(email=data.get('email')).first()
-
-        user.password = (data.get('passwd'))
-        db.session.add(user)
+        user.passwd_hash = generate_password_hash(data.get('passwd'))
         return True
 
     # 账号激活，因为激活时还不知道是哪个用户
@@ -104,10 +101,8 @@ class User(UserMixin, db.Model):
         try:
             data = s.loads(token)
         except BadSignature:
-            flash('无效的token')
             return False
         except SignatureExpired:
-            flash('token已失效')
             return False
         user = User()
         user.confirmed = True

@@ -6,6 +6,7 @@ from plant.views.mine.register import regist
 from plant.views.mine.change import change
 from plant.views.mine.myfavorite import myfavorite
 from plant.views.duoduo.news import index
+from plant.views.mine.foundpd import found
 
 # <<<<<<< HEAD
 # <<<<<<< HEAD
@@ -32,19 +33,13 @@ DEFAULT_BLUEPRINT = (
     (myposts,'/api/v1/user'),
     (myfavorite,'/api/v1/user'),
     (change,'/api/v1/user'),
+    (found,'/api/v1/user'),
     (shop, '/api/v1/shop'),
     (writepublish,'/api/v1/writepublish'),
     (get_new_essay,'/api/v1/found/get_new_essay'),
     (index, '/api/v1/index'),
-    (login, '/user'),
-    (regist, '/user'),
-    (myposts,'/user'),
-    (myfavorite,'/user'),
-    (change,'/user'),
-    (shop, '/shop'),
-    (writepublish,'/writepublish'),
-    (get_new_essay,'/get_new_essay'),
-    (index, '/index'),
+
+
 )
 
 #封装函数，完成蓝本注册

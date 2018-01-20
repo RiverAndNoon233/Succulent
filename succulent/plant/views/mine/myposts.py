@@ -13,12 +13,12 @@ def mypost():
     data = []
     for posts in Posts.query.filter_by(uid=uid):
         data1 = {
-            'id': posts.id,
-            'title': posts.title,
-            'content': posts.content,
+            'essay_id': posts.id,
+            'essay_title': posts.title,
+            'essay': posts.content,
             'category': posts.category,
-            'count': posts.count,
-            'timestamp': posts.timestamp,
+            'essay_views_num': posts.count,
+            'essay_time': posts.timestamp.strftime('%Y-%m-%d %H:%M:%S'),
         }
         data.append(data1)
     return jsonify({'code': 200, 'msg': 'success', 'data': data})

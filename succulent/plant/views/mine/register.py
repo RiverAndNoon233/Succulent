@@ -1,4 +1,4 @@
-import os
+# coding: utf-8
 from flask import Blueprint, render_template, flash, redirect, url_for, request, current_app
 # from plant.forms import RegisterForm, LoginForm, ModiUserForm, IconForm, FoundPasswd, ChangeMailForm
 from plant.models import User
@@ -9,11 +9,11 @@ from flask import jsonify
 regist = Blueprint('register', __name__)
 @regist.route('/register/', methods=['POST'])
 def register():
-    account = request.get_json('account').get('account')
-    email = request.get_json('email').get('email')
-    password = request.get_json('password').get('password')
+    account = request.get_json(True).get('username')
+    email = request.get_json(True).get('email')
+    password = request.get_json(True).get('password')
+    # print('account:',account,'email:','email','password:',password, '==========================')
     # 创建用户对象
-    print(account,'========================================')
     user = User()
     user.account = account
     user.passwd_hash = password
@@ -41,7 +41,7 @@ def activate(token):
     if User.check_activate_token(token):
         return '<p>注册成功</p>'
     else:
-        return jsonify({'code': 1, 'msg': '链接已失效'})
+        return '<p>链接已失效</p>'
 
 
 

@@ -11,6 +11,7 @@ change = Blueprint('change', __name__)
 @change.route('/changepd/', methods=['POST'],endpoint='changepd')
 # @loginCheck
 def changepd():
+    # print('session:',session.get('session_id'))
     uid = request.get_json(True).get('uid')
     oldpd = request.get_json(True).get('old_password')
     newpd = request.get_json(True).get('new_password')

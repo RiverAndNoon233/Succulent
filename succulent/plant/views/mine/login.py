@@ -25,6 +25,9 @@ def logined():
         elif user.confirmed == False:
             return jsonify({'code': 3, 'msg': '登录失败,用户邮箱未激活'})
         session['session_id'] = user.id
+        print(session.get('session_id'))
+        # session.pop('session_id', None)
+        # print(session.get('session_id'))
         # 以上都没错误 返回用户id
         data = {
             "uid":user.id,
