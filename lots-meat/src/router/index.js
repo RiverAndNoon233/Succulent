@@ -12,12 +12,19 @@ import newPersonKnow from "@/components/lots/modules/mustKnow-vue/newPerson-know
 import newShopKnow from "@/components/lots/modules/mustKnow-vue/newShop-know"
 import newPlantKnow from "@/components/lots/modules/mustKnow-vue/newPlant-know"
 import newDayKnow from "@/components/lots/modules/mustKnow-vue/newDay-know"
+import newPlantDetail from "@/components/lots/modules/mustKnow-vue/newPlantDetail"
 
-//以下四个分别是 多多 商城 我的 。。
+
+import lotBoxDetail from "@/components/lots/modules/lots-vue/lots-boxDetail"
+import lotPingjia from "@/components/lots/modules/lots-vue/lots-pingjia"
+
+//以下一级路由。。
 import lotTwo from '@/components/lots/lotTwo'
 import Find from "@/components/lots/find/find"
 import Shop from "@/components/lots/shop/shop"
 import Mine from "@/components/lots/mine/Mine"
+import ShopDetails from "@/components/lots/shop/shopdetails/ShopDetails.vue"
+import SubOrder from "@/components/lots/mine/set/mycarlist/SubOrder.vue"
 
 //未登陆和注册时路由
 import MineLogin from "@/components/lots/mine/MineLogin"
@@ -35,6 +42,12 @@ import MyWallet from "@/components/lots/mine/set/MyWallet"
 //发现里面的二级路由
 import FindBoxDetail from "@/components/lots/find/Find-boxdetail"
 import FindWritePublish from "@/components/lots/find/find-writepublish"
+import FindSearch from "@/components/lots/find/find-search"
+
+
+//以下钱包路由
+import ReCharge from "@/components/lots/mine/set/wallet/ReCharge"
+import WithDraw from "@/components/lots/mine/set/wallet/WithDraw"
 
 Vue.use(Router)
 
@@ -46,6 +59,7 @@ const routes = [
     {path:"/find-fo",name:'find-fo',component:Find,children:[
       {path:"FindBoxDetail",name:"FindBoxDetail",component:FindBoxDetail},
       {path:"FindWritePublish",name:"FindWritePublish",component:FindWritePublish},
+      {path:"FindSearch",name:"FindSearch",component:FindSearch}
     ]},
     {path:"/shop-fo",name:'shop-fo',component:Shop},
     {path:"/mine-fo",name:'',component:Mine,children:[
@@ -72,6 +86,8 @@ const routes = [
       {path: 'myorderfrom',name: 'myorderfrom',component:MyOrderForm},
       {path: 'myresetpass',name: 'myresetpass',component:MyResetpass},
       {path: 'mywallet',name: 'mywallet',component:MyWallet},
+      {path: 'recharge',name: 'recharge',component:ReCharge},
+      {path: 'withdraw',name: 'withdraw',component:WithDraw},      
     ]},
     //二级路由
     {path: '/lotindex',component:lotTwo,children:[
@@ -82,10 +98,17 @@ const routes = [
       {path: 'news',name: 'news',component:news},
       {path: 'newPersonKnow',name: 'newPersonKnow',component:newPersonKnow},
       {path: 'newShopKnow',name: 'newShopKnow',component:newShopKnow},
-      {path: 'newPlantKnow',name: 'newPlantKnow',component:newPlantKnow},
-      {path: 'newDayKnow',name: 'newDayKnow',component:newDayKnow}
+      {path: 'newPlantKnow',name: 'newPlantKnow',component:newPlantKnow,children:[
+           {path: 'newPlantDetail',name: 'newPlantDetail',component:newPlantDetail}
+      ]},
+      {path: 'newDayKnow',name: 'newDayKnow',component:newDayKnow},
+      {path: 'lotBoxDetail',name: 'lotBoxDetail',component:lotBoxDetail,children:[
+           {path: 'lotPingjia',name: 'lotPingjia',component:lotPingjia}
+      ]},
     ]
-    },    
+    },
+    {path:"/shopdetails:_id",name:"shopdetails",component:ShopDetails},
+    {path:"/suborder",name:"suborder",component:SubOrder},
     {path:'/**',redirect:'/lotindex'}
   ]
 //去掉路由前面#号
@@ -103,9 +126,9 @@ router.beforeEach(function(to,from,next){
   
 	switch(name){
 		case 'newPersonKnow':title='新人须知';break;
-		case 'newShopKnow':title='交易须知';break;
+		case 'newShopKnow':title='肉多多交易购买';break;
     case 'newPlantKnow':title='种植知识';break;
-    case 'newDayKnow':title='每日签到';break;
+    case 'newDayKnow':title='多多小助手';break;
 		default :title = '多多';break;
   }
   switch(num){

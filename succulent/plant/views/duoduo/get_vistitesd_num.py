@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+#多多首页展示最热文章的api
+
+>>>>>>> 46c4c5f92bb716186771010d5fb5f8ffc3bbaed5
 
 from flask import  request
 

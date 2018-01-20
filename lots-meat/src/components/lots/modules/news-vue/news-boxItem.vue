@@ -1,5 +1,5 @@
 <template>
-    <div class="lots-boxItem">
+    <div class="lots-boxItem" @click="detail">
       <div class="lots-boxItemLeft">
           <img :src="newartical.urlimage">
       </div>
@@ -13,7 +13,12 @@
 <script>
 export default {
     name:"news-boxItem",
-    props:['newartical']
+    props:['newartical'],
+    methods:{
+     detail(){
+        this.$router.push({path:'/lotindex/lotBoxDetail'});
+     } 
+    }
 }        
 </script>
 

@@ -6,11 +6,13 @@
         </div>
         <div class="con">
             <form @submit.prevent = 'changepas()'>
-                <p>原邮箱</p>
-                <input type="text" v-model="email" placeholder="请输入原邮箱">
-                <p>新邮箱</p>
-                <input type="text" v-model="newemail" placeholder="请输入新邮箱">
-                <input type="submit" value="保存">
+                <div>
+                    <p>原邮箱</p>
+                    <input type="text" v-model="email" placeholder="请输入原邮箱">
+                    <p>新邮箱</p>
+                    <input type="text" v-model="newemail" placeholder="请输入新邮箱">
+                </div>
+                <div class="sub"><input type="submit" value="保存"></div>
             </form>
         </div>
     </div>
@@ -59,21 +61,38 @@
 </script>
 <style lang="scss" scoped>
      .my-modify-email{
+        z-index:1;
+        background:#ccc;
         .con{
-            padding:1rem  0 0 .7rem;
-            p{
-                line-height:.3rem;
-            }
-            input:nth-of-type(3){
-                display:block;
-                margin:.3rem 0 0 .5rem;
-                border:none;
-                background:#04b10a;
-                width:.6rem;
-                height:.23rem;
-                border-radius:.1rem;
-                font-size:.1rem;
-                color:#fff;
+            form{
+                div{
+                    padding:.5rem .6rem 0;
+                    p{
+                        font-size:.13rem;
+                        line-height:.3rem;
+                    }
+                    input{
+                        width:2.5rem;
+                        height:.4rem;
+                        border:none;
+                        border-radius:.06rem;
+                        padding-left:.1rem;
+                    }
+                }
+                .sub{
+                    width:100%;
+                    padding:.25rem .1rem 0 .1rem;
+                    display:flex;
+                    justify-content:center;
+                    input{
+                        width:100%;
+                        height:.4rem;
+                        background:#03ab1a;
+                        color:#fff;
+                        border-radius:.06rem;
+                        border:none;
+                    } 
+                }
             }
         }
     }

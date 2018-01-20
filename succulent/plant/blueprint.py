@@ -27,6 +27,7 @@ from plant.views.shop.shop import shop
 
 DEFAULT_BLUEPRINT = (
     (main, ''),
+<<<<<<< HEAD
     (login, '/api/v1/user'),
     (regist, '/api/v1/user'),
     (myposts,'/api/v1/user'),
@@ -36,6 +37,17 @@ DEFAULT_BLUEPRINT = (
     (writepublish,'/api/v1/writepublish'),
     (get_new_essay,'/api/v1/found/get_new_essay'),
     (index, '/api/v1/index'),
+=======
+    (login, '/user'),
+    (regist, '/user'),
+    (myposts,'/user'),
+    (myfavorite,'/user'),
+    (change,'/user'),
+    (shop, '/shop'),
+    (writepublish,'/writepublish'),
+    (get_new_essay,'/get_new_essay'),
+    (index, '/index'),
+>>>>>>> 46c4c5f92bb716186771010d5fb5f8ffc3bbaed5
 
 )
 

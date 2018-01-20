@@ -1,0 +1,66 @@
+@import "./lots-boxdetailhead.scss";
+.lots-boxdetail{
+     @include flexbox();
+     @include flex-direction(column); 
+     .lots-articaldetail{
+          overflow-y: scroll;
+          .lots-articaldetailtop{
+            width:100%;
+            height:0.65rem;
+            padding:10px;
+            h1{
+                font-size:15px;
+                font-weight: normal;
+            }
+            h2{
+                margin-top:12px;
+                font-weight: normal;
+                color:#989898;
+                @include flexbox();
+                @include justify-content(space-between); 
+                //@include align-items(center);
+                .spanone{
+                    i{
+                        b{
+                            font-weight: normal;
+                        }
+                        strong{
+                            font-weight: normal;
+                            margin-left:0.05rem;
+                        }
+                    }
+                    .itwo{
+                        margin-left:0.23rem;
+                    }
+                }
+                .spantwo{
+                    b{
+                        font-weight: normal;
+                    }
+                    strong{
+                        font-weight: normal;
+                        margin-left:0.13rem;
+                    }
+                }
+            }
+        }
+        p{
+            width:100%;
+            height:10px;
+            background:#cdcdcd;
+        }
+        .lots-articaldetailcenter{
+            width:100%;
+            padding:0.1rem;
+            @include flexbox();
+            @include flex-direction(column); 
+            @include justify-content(center); 
+            @include align-items(center); 
+            img{
+                width:250px;
+                
+            }
+        }
+    }
+    
+    }

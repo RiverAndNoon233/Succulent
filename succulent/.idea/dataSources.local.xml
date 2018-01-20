@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
+<<<<<<< HEAD
     <data-source name="succulent_dev" uuid="334a37a7-5ed5-410a-8228-6a9994f9c9fa">
+=======
+    <data-source name="succulent_dev" uuid="d3084d59-89d6-495c-8059-c991de9b14cf">
+>>>>>>> 46c4c5f92bb716186771010d5fb5f8ffc3bbaed5
       <database-info product="SQLite" version="3.16.1" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" />
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <introspection-schemas>*:main</introspection-schemas>

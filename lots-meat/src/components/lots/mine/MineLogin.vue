@@ -23,6 +23,7 @@
     import bus from '../../../modules/bus.js'
     import axios from 'axios'
     import {Toast} from 'mint-ui'
+    import {mapActions} from "vuex"
     export default {
         name:"mine-login",
         props:['LoginShow'],
@@ -49,13 +50,18 @@
                     that.LoginOnData = res.data.data
                     //调用vuex方法 创建本地存储
                     that.$store.commit('change_type',data)    
-                    that.$router.replace({name:'mineloginon'})      
+                    that.$router.replace({name:'mineloginon'}) 
+
                 })
-                
+                this.submitForm()
             },
             toRegister(){
                 this.$router.replace({name:'mineregister'})  
             },
+            submitForm () {
+                //  this.$store.commit("addGid",gid)
+                this.$store.dispatch('addGood')
+            }
         },
 
     }

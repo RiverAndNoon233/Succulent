@@ -1,0 +1,71 @@
+.newPerson-know{
+        @include flexbox();
+        @include flex-direction(column);
+        @include justify-content(center); 
+        .newPerson-box{
+            overflow-y: scroll;
+            flex:1;
+            .newPerson-box1{
+                width:100%;
+                height:0.83rem;
+                background:#03ab1a;
+                @include flexbox();
+                @include align-items(center);
+                @include flex-direction(column);
+                @include justify-content(center);
+                .box1-p{
+                    width:2.28rem;
+                    height:0.5rem;
+                    color:#fff;
+                    padding-left:0.1rem;
+                    @include flexbox();
+                    @include align-items(center);
+                    @include justify-content(center);
+                    //@include border(0 0 1px,dashed,#fff, 0); 
+                    border-bottom:1px dashed #fff;       
+                }
+                .box1-p1{
+                    color:#fff;
+                    margin-top:0.05rem;
+                    padding-left: 0.15rem;
+                    font-size:12px;
+                }
+            }
+        }
+        .newPerson-box2{
+            width:100%;
+            height:0.5rem;
+            margin-top:44px;
+            background:#03ab1a;
+            @include flexbox();
+            @include align-items(center);
+            @include justify-content(center);
+            color:#fff;
+        }
+        .newPerson-box3{
+            width:100%;
+            margin-top:44px;
+            @include flexbox();
+            @include flex-direction(column);
+            @include align-items(center);
+            @include justify-content(center);
+            font-size:18px;
+            color:#484848;
+            .img1{
+                width:1.86rem;
+                height:4.35rem;
+                margin:20px 0 10px 0;
+            }
+            .img2{
+                width:1.86rem;
+                height:2.52rem;
+                margin:10px 0 155px 0;
+            }
+        }
+        .box1-p2{
+            margin:40px auto;
+            width:2.23rem;
+            color:#010101;
+            font-size:13px;
+        }
+    }

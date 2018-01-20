@@ -1,3 +1,5 @@
+#获取文章的所有评论
+
 import json
 
 from flask import request

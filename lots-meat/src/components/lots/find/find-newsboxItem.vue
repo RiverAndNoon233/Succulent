@@ -1,5 +1,5 @@
 <template>
-        <li>
+        <li class="find-detail-li" @click="detail">
             <div class="newsbox-top">
                 <img src="/static/images/find5.jpg">
                 <p class="newsbox-p">
@@ -11,7 +11,7 @@
                 {{newItem.essay_title}}
             </div>
             <div class="newsbox-image">
-                <img v-for="(ImageUrl,i) in ImageUrls" :key="i" :src="ImageUrl">
+                <img v-for="(ImageUrl,i) in ImageUrls" :key="i" v-preview="ImageUrl" :src="ImageUrl">
             </div>
             <div class="newsbox-foot">
                 <span>评论</span><span class="fa fa-commenting-o"></span>
@@ -29,6 +29,11 @@
             }
         },
         props:['newItem'],
+        methods:{
+            detail(){
+                this.$router.push({path:'/lotindex/lotBoxDetail'});
+            } 
+        },
         mounted(){
             this.ImageUrls = this.newItem.essay_image;
             //console.log(this.newItem.essay_image)

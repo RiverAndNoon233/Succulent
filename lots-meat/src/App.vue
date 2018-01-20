@@ -2,6 +2,7 @@
   <div id="app">
     <div class="exothecium">
       <router-view></router-view>
+       <lg-preview></lg-preview>
       <Footers></Footers>
     </div>
   </div>

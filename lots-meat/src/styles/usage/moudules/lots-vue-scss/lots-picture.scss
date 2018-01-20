@@ -1,0 +1,50 @@
+.picture-router-items{
+    @include flexbox();
+    @include flex-direction(column);
+    overflow-y: scroll;
+     width:100%;
+     height:100%;
+     background:#fff;
+    .picture{
+         @include flexbox();
+         margin-top:20px;
+        .picture-left{
+            margin-left:0.33rem;
+            
+            img{
+                   width:0.44rem;
+                    height:0.44rem;
+            }
+        }
+        .picture-right{
+            margin-left:0.1rem;
+            h1{}
+            h2{
+                color:#ccc;
+                font-weight: 500;
+                font-size:12px;
+            }
+            h3{}
+            h4{
+                color:#ccc;
+                 font-weight: 500;
+                  font-size:12px;
+            }
+            ul{
+                @include flexbox();
+                @include flex-wrap(wrap);
+                li{
+                    width:0.8rem;
+                    height:0.8rem;
+                    padding:0.01rem;
+                    img{
+                        width:100%;
+                        height:100%;
+                    }
+                }
+            }
+        }
+    }
+    
+        
+}

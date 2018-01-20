@@ -1,10 +1,10 @@
 <template>
     <div class="find-writebox">
        <div class="find-writetitel">
-           <input type="text" placeholder="点击添加标题">
+           <input type="text" placeholder="点击添加标题" v-model="message.title">
        </div>
        <div class="find-writecontent">
-           <input type="text" placeholder="说点什么吧">
+           <input type="text" placeholder="说点什么吧" v-model="message.essay">
        </div>
        <div class="find-writeimage">
            <div>  
@@ -14,25 +14,30 @@
                 </div>  
                 <div>  
                     <div class="beat">
-                        <input type="file" id="upload" accept="image"  multiple="true" @change="upload">  
+                        <input type="file" id="upload" accept="image"  multiple="multiple" @change="upload">  
                     </div>
                     <label for="upload"></label>  
                 </div>  
                 </div>  
             </div> 
        </div>
-       <div class="find-writekong"></div>
+       <div class="find-writekong">
+          <!-- 景天科，仙人掌科，番杏科，百合科 -->
+          请点击您要发布的类别：<br/>
+          <mt-button size="small" @click="message.kind = 1">景天科</mt-button>
+          <mt-button size="small" @click="message.kind = 2">仙人掌科</mt-button>
+          <mt-button size="small" @click="message.kind = 3">番杏科</mt-button>
+          <mt-button size="small" @click="message.kind = 4">百合科</mt-button>
+       </div>
     </div>
 </template>
 
 <script>
-    // export default {
-    //     name:"find-writebox"
-    // } 
- import Exif from 'exif-js'  
-  
+import { Button } from 'mint-ui';
+import Exif from 'exif-js'  
 export default {  
   name:"find-writebox",
+  props:["message"],
   data () {  
     return {  
       headerImage:[],
@@ -49,6 +54,7 @@ export default {
            this.picValue = files[i]; 
             this.imgPreview(this.picValue); 
       } 
+     this.headerImage = this.message.images;
     },  
     imgPreview (file) {  
       let self = this;  
@@ -74,14 +80,12 @@ export default {
             if (this.result.length <= (100 * 1024)) {  
               //self.headerImage = this.result;  
               self.headerImage.push(this.result);
-              self.postImg(); 
-                //console.log(self.headerImage);  
+               // console.log(self.headerImage);  
             }else {  
               img.onload = function () {  
                 let data = self.compress(img,Orientation);  
                 //self.headerImage = data; 
                 self.headerImage.push(data); 
-                self.postImg(); 
                 //console.log(self.headerImage); 
               }  
             }  
@@ -90,7 +94,6 @@ export default {
       },  
       postImg () {  
         //这里写接口 
-       console.log("1");
       // console.log(this.headerImage)
       },  
       rotateImg (img, direction,canvas) {  
