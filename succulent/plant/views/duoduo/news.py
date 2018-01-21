@@ -9,30 +9,36 @@ index = Blueprint('index', __name__)
 # 新聞列表
 
 
-@index.route('/news')
+@index.route('/news/')
 def news():
     page = request.args.get('page', 1, int)
-    paginates = News.query.all().order_by(
-        News.timestamp.desc()).paginate(page, per_page=8, error_out=False)
+    paginates = News.query.order_by(News.timestamp).paginate(
+        page, per_page=8, error_out=False)
+    pages = paginates.pages
     news_list = paginates.items
     data = []
     for news in news_list:
+        count = news.comment.count()
         dic = {
             "id": news.id,
             "title": news.title,
-            "urlimage": news.images.all().first(),
+            "urlimage": news.images.first().img,
             "timestamp": news.timestamp.strftime('%Y-%m-%d %H:%M:%S'),
-            "count": news.comment.all().count, }
+            "count": count, }
+        print(news.images.first().img)
         data.append(dic)
 
-    return jsonify({"code": 200, "msg": "success", "data": data})
+    return jsonify({"code": 1, "msg": "success", "data": data, 'pages': pages, 'page': page})
 
 # 新聞詳情
 
 
-@index.route('/news_detail')
+@index.route('/news_detail/', methods=['GET', 'POST'])
 def news_detail():
-    nid = request.args.get('nid')
+    nid = request.get_json(True).get('nid')
+    # nid = request.json.get('nid')
+
+    print(nid)
     if nid is None:
         return jsonify({'code': 0, 'msg': 404})
     news = News.query.get(nid)
@@ -52,9 +58,10 @@ def news_detail():
     return jsonify({
         'code': '1',
         'news_data': {
+            'nid': news.id,
             'title': news.title,
             'view_num': news.count,
-            'comment_num': news.comment.all().count(),
+            'comment_num': news.comment.count(),
             'time': news.timestamp.strftime('%Y-%m-%d %H:%M:%S'),
             'news': news.content,
             'img': img_list,
@@ -63,9 +70,9 @@ def news_detail():
 # 評論列表
 
 
-@index.route('/comment')
+@index.route('/comment', methods=['GET', 'POST'])
 def comment():
-    nid = request.args.get('nid')
+    nid = request.get_json(True).get('nid')
     if nid is None:
         return jsonify({'code': 0, 'msg': 404})
     news = News.query.get(nid)
@@ -78,7 +85,7 @@ def comment():
         dic = {
             "user_id": user.id,
             "user_name": user.nickname,
-            "user_icon": image,
+            "user_icon": user.image,
             "comment_time": i.timestamp.strftime('%Y-%m-%d %H:%M:%S'),
             "comment": i.context,
             "comment_id": i.id,
@@ -92,7 +99,7 @@ def comment():
 @index.route('news_talk', methods=['GET', 'POST'])
 def news_talk():
     try:
-        uid = request.get_json(True).get('uid')
+        uid = session.get('session_id')
         nid = request.get_json(True).get('nid')
         context = request.get_json(True).get('context')
         # 查询得到具体用户
@@ -127,7 +134,7 @@ def push_news():
     news.title = title
     news.content = content
     try:
-        db.session.add(p)
+        db.session.add(news)
     except:
         return {'code': 0, "msg": "标题已经存在"}
 
