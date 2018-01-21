@@ -29,7 +29,7 @@ class Get_comments_API(Resource):
             one_data['user_icon']=user.image
             one_data['user_name']=user.nickname
             #得到文章的评论时间、评论正文
-            one_data['comment_time']=one_comment.timestamp.strftime('%Y-%m-%d %H:%M:%S')
+            one_data['comment_time']=(one_comment.timestamp+datetime.timedelta(hours=8)).strftime('%Y-%m-%d %H:%M:%S')
             one_data['comment']=one_comment.content
             one_data['comment_id']=one_comment.id
 

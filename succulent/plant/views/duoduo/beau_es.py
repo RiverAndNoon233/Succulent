@@ -34,7 +34,7 @@ class Beau_be(Resource):
             #得到晒美图的这个id
             be_dict['essay_id']=one_essay.id
             #得到晒美图的发帖时间
-            be_dict['time']=one_essay.time.strftime('%Y-%m-%d %H:%M:%S')
+            be_dict['time']=(one_essay.time+datetime.timedelta(hours=8)).strftime('%Y-%m-%d %H:%M:%S')
             #得到晒美图的文字内容
             be_dict['essay']=one_essay.intro
             #得到晒美图的图片列表
