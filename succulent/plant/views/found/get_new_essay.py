@@ -55,7 +55,7 @@ class Get_new_essay_API(Resource):
                     break
             one_data['essay_image'] = image_list
             # 得到文章时间
-            one_data['essay_time'] = (one_post.timestamp+datetime.timedelta(hours=8)).strftime(
+            one_data['essay_time'] = one_post.timestamp.strftime(
                 '%Y-%m-%d %H:%M:%S')
             # 得到文章的浏览量
             one_data['essay_views_num'] = one_post.count

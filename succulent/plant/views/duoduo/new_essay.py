@@ -13,7 +13,7 @@ class Home_new_essay_API(Resource):
         # 得到文章的页码数
         page = request.json.get('page')
         #分页查询文章，并按照时间进行降序排序
-        posts=Posts.query.order_by(db.desc(Posts.id)).filter_by(rid=0)
+        posts=Posts.query.order_by(db.desc(Posts.timestamp)).filter_by(rid=0)
 
         #判断文章输入的页数是否在正确的范围内，不在则返回404
         try:
@@ -32,7 +32,7 @@ class Home_new_essay_API(Resource):
             # 得到这篇文章的用户对象
             user = one_post.user
             # 得到用户头像
-            one_data['pid'] = one_post.id
+            one_data['id'] = one_post.id
             # 得到用户名
             one_data['title'] = one_post.title
 
@@ -46,7 +46,7 @@ class Home_new_essay_API(Resource):
             #执行赋值
             one_data['urlimage'] = one_image
             # 得到文章时间
-            one_data['timestamp'] = (one_post.timestamp+datetime.timedelta(hours=8)).strftime('%Y-%m-%d %H:%M:%S')
+            one_data['timestamp'] = one_post.timestamp.strftime('%Y-%m-%d %H:%M:%S')
             # 得到文章的浏览量
             one_data['count'] = one_post.count
 

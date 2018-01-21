@@ -30,7 +30,7 @@ class Get_visited_nums_API(Resource):
             # 得到这篇文章的用户对象
             user = one_post.user
             # 得到文章id
-            one_data['pid'] = one_post.id
+            one_data['id'] = one_post.id
             # 得到文章标题
             one_data['title'] = one_post.title
 
@@ -44,7 +44,7 @@ class Get_visited_nums_API(Resource):
             #执行赋值
             one_data['urlimage'] = one_image
             # 得到文章时间
-            one_data['timestamp'] = (one_post.timestamp+datetime.timedelta(hours=8)).strftime('%Y-%m-%d %H:%M:%S')
+            one_data['timestamp'] = one_post.timestamp.strftime('%Y-%m-%d %H:%M:%S')
             # 得到文章的浏览量
             one_data['count'] = one_post.count
 
