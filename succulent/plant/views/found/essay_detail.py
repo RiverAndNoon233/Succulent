@@ -26,7 +26,7 @@ class Essay_detail_API(Resource):
         post_dict['essay_id'] = post.id
         post_dict['essay_title'] = post.title
         post_dict['essay_views_num'] = post.count
-        post_dict['essay_time'] = post.timestamp.strftime('%Y-%m-%d %H:%M:%S')
+        post_dict['essay_time'] = (post.timestamp+datetime.timedelta(hours=8)).strftime('%Y-%m-%d %H:%M:%S')
         post_dict['essay'] = post.content
         # 获取文章图片的所有图片列表
         images = post.image
