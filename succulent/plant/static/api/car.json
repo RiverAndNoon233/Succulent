@@ -1,0 +1,15 @@
+
+{
+    "islogin":1,
+    "data":[
+        {"gid":1,"goods_name":"高1丽","price":9.9,"image":"/static/images/1.jpg","num":3},
+        {"gid":2,"goods_name":"高2丽","price":9.9,"image":"/static/images/1.jpg","num":3},
+        {"gid":3,"goods_name":"高3丽","price":9.9,"image":"/static/images/1.jpg","num":3}, 
+        {"gid":4,"goods_name":"高3丽","price":9.9,"image":"/static/images/1.jpg","num":3}, 
+        {"gid":5,"goods_name":"高3丽","price":9.9,"image":"/static/images/1.jpg","num":3}, 
+        {"gid":6,"goods_name":"高3丽","price":9.9,"image":"/static/images/1.jpg","num":3}, 
+        {"gid":7,"goods_name":"高3丽","price":9.9,"image":"/static/images/1.jpg","num":3}, 
+        {"gid":8,"goods_name":"高3丽","price":9.9,"image":"/static/images/1.jpg","num":3} 
+
+    ]
+}

@@ -32,7 +32,7 @@ class Home_new_essay_API(Resource):
             # 得到这篇文章的用户对象
             user = one_post.user
             # 得到用户头像
-            one_data['id'] = one_post.id
+            one_data['pid'] = one_post.id
             # 得到用户名
             one_data['title'] = one_post.title
 
