@@ -11,8 +11,12 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # 邮件发送
     MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'smtp.163.com'
+    MAIL_PORT = 465
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'm2809695868@163.com'
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') or 'shao08251400'
+    MAIL_PORT = os.environ.get('MAIL_PORT') or 465
+    MAIL_USE_SSL = os.environ.get('MAIL_USE_SSL') or True
+    MAIL_USE_SSL = os.environ.get('FLASKY_MAIL_SUBJECT_PREFIX') or '163.com'
 
     UPLOADED_PHOTOS_DEST = os.path.join(base_dir,'static/icon')
     MAX_CONTENT_LENGTH = 2*1024*1024
