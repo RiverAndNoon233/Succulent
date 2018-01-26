@@ -3,6 +3,8 @@
 #搜索文章api
 
 #>>>>>>> 46c4c5f92bb716186771010d5fb5f8ffc3bbaed5
+import datetime
+
 from flask import  request
 from sqlalchemy import or_
 
@@ -51,7 +53,7 @@ class Search_essay_API(Resource):
             #执行赋值
             one_data['urlimage'] = one_image
             # 得到文章时间
-            one_data['timestamp'] = one_post.timestamp.strftime('%Y-%m-%d %H:%M:%S')
+            one_data['timestamp'] = (one_post.timestamp+datetime.timedelta(hours=8)).strftime('%Y-%m-%d %H:%M:%S')
             # 得到文章的浏览量
             one_data['count'] = one_post.count
 
